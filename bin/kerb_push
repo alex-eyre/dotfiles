@@ -1,0 +1,4 @@
+#!/bin/sh
+printf "Pushing to git via Kerberos (temporary solution--sure buddy)\n"
+/mnt/c/Program\ Files/Git/bin/bash.exe -c "git push"
+printf "Thanks for avoiding using MIT-Kerberos on your WSL!\n"
