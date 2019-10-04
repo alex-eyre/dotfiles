@@ -28,6 +28,7 @@
 			"modes"
 			"pretty-fonts"
 			"snippets"
+			"shell"
                          ))
 
 (use-package dash)

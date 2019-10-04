@@ -1,16 +1,28 @@
 #SingleInstance, force
 
+I_Icon = %A_ScriptDir%/binds.ico
+IfExist, %I_Icon%
+  Menu, Tray, Icon, %I_Icon%
 SetCapsLockState, AlwaysOff
-Menu, Tray, NoIcon
 
-#Return::Run, "alacritty.exe"
+; #Return::Run, "alacritty.exe"
+#Return::Run, "C:\Users\ase\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\winterm"
 #+e::Run, "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Chromium"
 #+.::Run, "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code"
 #+,::Run, "runemacs.exe", "-mm"
 #+a::Run, "C:\Program Files\qutebrowser\qutebrowser.exe"
 #+o::Run, "C:\Windows\explorer.exe"
 
-#+c::WinClose, A
+close_function() {
+	WinGetTitle, Title, A
+	if (Title = "Todoist: To-Do List and Task Manager") {
+                  WinMinimize, A
+	  } else {
+                  WinClose, A
+            }
+}
+
+#+c::close_function()
 
 CapsLock & m::
 V++

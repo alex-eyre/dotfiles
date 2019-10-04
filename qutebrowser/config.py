@@ -12,7 +12,8 @@ c.url.searchengines = {"DEFAULT": "https://duckduckgo.com?q={}",
                        "scholar": "https://scholar.google.com/scholar?q={}",
                        "wiki": "https://en.wikipedia.org/w/index.php?search={}",
                        "amaz": "https://amazon.co.uk/s?k={}",
-                       "note": "file:///C:/Users/ase/notes/{}.html"}
+                       "note": "file:///C:/Users/ase/notes/{}.html",
+                       "ccwiki": "https://wiki.uk.cambridgeconsultants.com/index.php?search={}"}
 
 c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"
 c.content.headers.accept_language = "en-US,en;q=0.5"
