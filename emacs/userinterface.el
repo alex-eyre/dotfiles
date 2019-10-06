@@ -26,6 +26,8 @@
   ("C-x l" . dired-sidebar-toggle-sidebar)
   :demand t
   :commands(dired-sidebar-toggle-sidebar)
+  :hook
+  (after-init . dired-sidebar-show-sidebar)
   :config
   (evil-ex-define-cmd "swi[tchtosidebar]" 'dired-sidebar-jump-to-sidebar)
   (setq dired-sidebar-use-custom-font t)
@@ -69,11 +71,6 @@
   :demand t
   :hook(after-init . ivy-mode))
 
-(use-package org
-  :demand t
-  :config
-  (evil-ex-define-cmd "frt" 'org-toggle-latex-fragment)
-  (evil-ex-define-cmd "html" 'org-html-export-to-html))
   
 
 
@@ -95,3 +92,7 @@
 (add-to-list 'default-frame-alist
 	     '(font . "FiraCode Nerd Font-11")
 	     '(font . "FuraCode NF-11"))
+(custom-theme-set-faces
+ 'user
+ '(variable-pitch ((t (:family "Source Sans Pro" :height 1.0 :weight light))))
+ '(fixed-pitch ((t ( :family "FuraCode NF" :slant normal :weight normal :height 1.0 :width normal)))))
