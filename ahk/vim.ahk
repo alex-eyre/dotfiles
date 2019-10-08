@@ -3,6 +3,16 @@ I_Icon = %A_ScriptDir%/vim.ico
 IfExist, %I_Icon%
   Menu, Tray, Icon, %I_Icon%
 
+global key_mode := 0
+; 0 == normal
+; 1 == vim mouse
+
+setup_vim_mouse_mode()
+>^Tab::cycle_mode()
+Launch_App2::cycle_mode()
+AppsKey::cycle_mode()
+
+
 SetSystemCursor( Cursor = "", cx = 0, cy = 0 )
 {
     BlankCursor := 0, SystemCursor := 0, FileCursor := 0 ; init
@@ -95,7 +105,6 @@ UpdateCursor()
 }
 
 
-setup_vim_mouse_mode()
 
 NormalCursor := "%A_ScriptDir%/normal.cur"
 VimCursor := "%A_ScriptDir%/vim.cur"
@@ -109,9 +118,6 @@ replace_cursor(cursor_handle) {
         DllCall("SetCursor", "UInt", cursor_handle)
 }
 
-global key_mode := 0
-; 0 == normal
-; 1 == vim mouse
 
 
 move_up(amount) {
@@ -169,6 +175,10 @@ DoClick:
 	Click
 Return
 
+DoEnter:
+	SendInput, {Enter}
+Return
+
 DoRightClick:
 	Click, Right
 Return
@@ -190,67 +200,69 @@ setup_vim_mouse_mode() {
 	Hotkey, ^h, MoveLeftMicro
 	Hotkey, ^l, MoveRightMicro
 
-        Hotkey, +Enter, DoClick
+	Hotkey, Enter, DoClick
 	Hotkey, ^Enter, DoRightClick
+	Hotkey, Enter & @, DoEnter
+	Hotkey, @ & Enter, DoEnter
+
 }
 
 enable_vim_mouse_mode() {
 	Hotkey, k, On
 	Hotkey, j, On
 	Hotkey, h, On
-        Hotkey, l, On
+	Hotkey, l, On
 
 	Hotkey, +k, On
 	Hotkey, +j, On
 	Hotkey, +h, On
-        Hotkey, +l, On
+	Hotkey, +l, On
 
 	Hotkey, ^k, On
 	Hotkey, ^j, On
 	Hotkey, ^h, On
-        Hotkey, ^l, On
+	Hotkey, ^l, On
 
-        Hotkey, +Enter, On
+	Hotkey, Enter, On
 	Hotkey, ^Enter, On
+	Hotkey, Enter & @, On
+	Hotkey, @ & Enter, On
 
 	global Cursor := A_ScriptDir . ".\vim.cur"
-        UpdateCursor()
+	UpdateCursor()
 }
 disable_vim_mouse_mode() {
 	Hotkey, k, Off
 	Hotkey, j, Off
 	Hotkey, h, Off
-        Hotkey, l, Off
+	Hotkey, l, Off
 
 	Hotkey, +k, Off
 	Hotkey, +j, Off
 	Hotkey, +h, Off
-        Hotkey, +l, Off
+	Hotkey, +l, Off
 
 	Hotkey, ^k, Off
 	Hotkey, ^j, Off
 	Hotkey, ^h, Off
-        Hotkey, ^l, Off
+	Hotkey, ^l, Off
 
-        Hotkey, +Enter, Off
+	Hotkey, Enter, Off
 	Hotkey, ^Enter, Off
+	Hotkey, Enter & @, Off
+	Hotkey, @ & Enter, Off
+
+
 	global Cursor := A_ScriptDir . ".\normal.cur"
-        UpdateCursor()
-}
-
-monitor_shift_left() {
-
+	UpdateCursor()
 }
 
 cycle_mode() {
-        global key_mode
+	global key_mode
 	key_mode := 1 - key_mode
-	if(key_mode = "1") {
-                enable_vim_mouse_mode()
+	if(key_mode = 1) {
+		enable_vim_mouse_mode()
 	} else {
-                disable_vim_mouse_mode()
-        }
+		disable_vim_mouse_mode()
+	}
 }
-cycle_mode()
->^Tab::cycle_mode()
-Launch_App2::cycle_mode()
