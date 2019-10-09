@@ -1,5 +1,7 @@
 (straight-use-package 'spacemacs-theme)
 (load-theme 'spacemacs-dark t)
+(setq spacemacs-theme-org-agenda-height nil)
+(setq spacemacs-theme-org-height nil)
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -87,6 +89,9 @@
 
 (use-package doom-modeline
   :demand t
+  :config
+  (setq inhibit-compacting-font-caches t)
+  (setq find-file-visit-truename t)
   :hook (after-init . doom-modeline-mode))
 
 (add-to-list 'default-frame-alist

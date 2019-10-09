@@ -11,11 +11,13 @@
 (font-lock-add-keywords 'org-mode
                         '(("^ *\\([-]\\) "
                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-(use-package org-bullets)
+(use-package org-bullets
+  :config
+  (setq org-bullets-bullet-list '("○" "☉" "◎" "◉" "○" "◌" "◎" "●" "◦" "◯" "⚪" "⚫" "⚬" "❍" "￮" "⊙" "⊚" "⊛" "∙"))
+  (set-fontset-font "fontset-default" nil 
+                  (font-spec :size 20 :name "Symbola")))
 (let* ((variable-tuple
-        (cond ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
-              ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
-              ((x-list-fonts "Verdana")         '(:font "Verdana"))
+        (cond ((x-list-fonts "Libre Baskerville") '(:font "Libre Baskerville"))
               ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
               (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
        (base-font-color     (face-foreground 'default nil 'default))
@@ -23,14 +25,14 @@
 
   (custom-theme-set-faces
    'user
-   `(org-level-8 ((t (,@headline ,@variable-tuple))))
-   `(org-level-7 ((t (,@headline ,@variable-tuple))))
-   `(org-level-6 ((t (,@headline ,@variable-tuple))))
-   `(org-level-5 ((t (,@headline ,@variable-tuple))))
-   `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
+   `(org-level-8 ((t (,@headline ,@variable-tuple :height 1.25))))
+   `(org-level-7 ((t (,@headline ,@variable-tuple :height 1.25))))
+   `(org-level-6 ((t (,@headline ,@variable-tuple :height 1.25))))
+   `(org-level-5 ((t (,@headline ,@variable-tuple :height 1.25))))
+   `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.25))))
    `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.25))))
-   `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
-   `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.75))))
+   `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.25))))
+   `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.25))))
    `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
 
 (use-package org
