@@ -75,12 +75,11 @@
 
   
 
-
 (use-package nlinum-relative
-  :config
+  :init
   (nlinum-relative-setup-evil)
-  (add-hook 'prog-mode-hook 'nlinum-relative-mode)
-  (add-hook 'evil-insert-state-exit-hook 'nlinum-relative-mode))
+  :hook
+  (prog-mode . nlinum-relative-mode))
 
 (use-package nlinum
   :config
@@ -98,5 +97,4 @@
 	     '(font . "FuraCode NF-11"))
 (custom-theme-set-faces
  'user
- '(variable-pitch ((t (:family "Source Sans Pro" :height 1.0 :weight light))))
  '(fixed-pitch ((t ( :family "FuraCode NF" :slant normal :weight normal :height 1.0 :width normal)))))
