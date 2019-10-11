@@ -26,9 +26,9 @@
 (toc:load-config-file '("keyboard"
 			"userinterface"
 			"modes"
-			"pretty-fonts"
 			"snippets"
 			"shell"
+			"prettyfont"
                          ))
 
 (use-package dash)
@@ -49,7 +49,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("ab2cbf30ab758c5e936b527377d543ce4927001742f79519b62c45ba9dd9f55e" default)))
+    ("95def502dcc5f21224e7e252ad6371e9f52ece0a4a9416856195c8c45ed16273" "ab2cbf30ab758c5e936b527377d543ce4927001742f79519b62c45ba9dd9f55e" default)))
  '(latex-run-command
    "C:\\\\Program Files (x86\\\\LaTeX\\\\texlive\\\\2019\\\\bin\\\\win32\\\\latex.exe"))
 (custom-set-faces
@@ -57,4 +57,24 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(fixed-pitch ((t (:family "FuraCode NF" :slant normal :weight normal :height 1.0 :width normal))))
+ '(org-block ((t (:inherit fixed-pitch))))
+ '(org-document-info ((t (:foreground "dark orange"))))
+ '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+ '(org-document-title ((t (:inherit default :weight bold :foreground "#b2b2b2" :font "Libre Baskerville" :height 2.2 :underline t))))
+ '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+ '(org-level-1 ((t (:inherit default :weight bold :foreground "#b2b2b2" :font "Libre Baskerville" :height 2.0))))
+ '(org-level-2 ((t (:inherit default :weight bold :foreground "#b2b2b2" :font "Libre Baskerville" :height 1.5))))
+ '(org-level-3 ((t (:inherit default :weight bold :foreground "#b2b2b2" :font "Libre Baskerville" :height 1.2))))
+ '(org-level-4 ((t (:inherit default :weight bold :foreground "#b2b2b2" :font "Libre Baskerville" :height 1.0))))
+ '(org-level-5 ((t (:inherit default :weight bold :foreground "#b2b2b2" :font "Libre Baskerville"))))
+ '(org-level-6 ((t (:inherit default :weight bold :foreground "#b2b2b2" :font "Libre Baskerville"))))
+ '(org-level-7 ((t (:inherit default :weight bold :foreground "#b2b2b2" :font "Libre Baskerville"))))
+ '(org-level-8 ((t (:inherit default :weight bold :foreground "#b2b2b2" :font "Libre Baskerville"))))
+ '(org-link ((t (:foreground "royal blue" :underline t))))
+ '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-property-value ((t (:inherit fixed-pitch))) t)
+ '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+ '(org-verbatim ((t (:inherit (shadow fixed-pitch)))))
+ '(variable-pitch ((t (:family "Source Sans Pro" :height 1.0 :weight light)))))
