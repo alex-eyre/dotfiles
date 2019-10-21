@@ -1,9 +1,35 @@
 (use-package ahk-mode)
 (use-package rust-mode)
 (use-package htmlize)
+
+
+(use-package markdown-mode)
 (use-package auctex
   :defer t
   :demand t)
+
+(use-package company
+  :demand t
+  :hook(prog-mode . company-mode))
+
+(defun evil-ex-define-cmd-local
+    (cmd function)
+  "Locally binds the function FUNCTION to the command CMD."
+  (unless (local-variable-p 'evil-ex-commands)
+    (setq-local evil-ex-commands (copy-alist evil-ex-commands)))
+  (evil-ex-define-cmd cmd function))
+
+(use-package jedi
+  :hook
+  (python-mode . jedi-mode)
+  (python-mode . (lambda () (evil-ex-define-cmd-local "goto" #'jedi:goto-definition))))
+(use-package dumb-jump
+  :hook
+  (prog-mode . dumb-jump-mode)
+  (prog-mode . (lambda () (evil-ex-define-cmd-local "goto" #'dumb-jump-go))))
+
+(use-package company-jedi
+  :after(company))
 
 (use-package org-jira
   :config(setq jiralib-url "https://issues.cambridgeconsultants.com"))
@@ -11,10 +37,17 @@
 (use-package cdlatex
   :hook(org-mode . org-cdlatex-mode))
 
+(use-package evil-org
+  :after org
+  :hook(org . evil-org-mode))
 
 (font-lock-add-keywords 'org-mode
                         '(("^ *\\([-]\\) "
                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+(use-package mixed-pitch
+  :after org
+  :hook(text-mode . mixed-pitch-mode))
+
 (use-package org-bullets
   :config
   (setq org-bullets-bullet-list '("○" "☉" "◎" "◉" "○" "◌" "◎" "●" "◦" "◯" "⚪" "⚫" "⚬" "❍" "￮" "⊙" "⊚" "⊛" "∙"))
@@ -32,11 +65,11 @@
    `(org-level-7 ((t (,@headline ,@variable-tuple))))
    `(org-level-6 ((t (,@headline ,@variable-tuple))))
    `(org-level-5 ((t (,@headline ,@variable-tuple))))
-   `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
-   `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.2))))
-   `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.3))))
-   `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.4))))
-   `(org-document-title ((t (,@headline ,@variable-tuple :height 1.5 :underline t))))))
+   `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.05))))
+   `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.1))))
+   `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.15))))
+   `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.2 :underline t))))
+   `(org-document-title ((t (,@headline ,@variable-tuple :height 1.25 :underline t))))))
 
 (use-package org
   :demand t
