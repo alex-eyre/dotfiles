@@ -94,7 +94,6 @@
   :hook (after-init . doom-modeline-mode))
 
 (add-to-list 'default-frame-alist
-	     '(font . "FiraCode Nerd Font-11")
 	     '(font . "FuraCode NF-11"))
 (custom-theme-set-faces
  'user
