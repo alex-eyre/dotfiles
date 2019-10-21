@@ -1,4 +1,4 @@
-c.fonts.monospace = "FuraCode NF, FiraCode Nerd Font, monospace"
+c.fonts.monospace = "FuraCode NF"
 c.tabs.position = "left"
 c.colors.tabs.bar.bg = "#2c2c2c"
 c.tabs.show = "multiple"
@@ -18,5 +18,8 @@ c.url.searchengines = {"DEFAULT": "https://duckduckgo.com?q={}",
 c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"
 c.content.headers.accept_language = "en-US,en;q=0.5"
 c.content.headers.custom = {"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"}
-c.content.canvas_reading = False
-c.content.webgl = False
+
+c.fonts.statusbar = "11pt monospace"
+c.fonts.completion.category = "bold 11pt monospace"
+c.fonts.completion.entry = "11pt monospace"
+c.fonts.downloads = "11pt monospace"
