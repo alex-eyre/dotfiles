@@ -1,7 +1,10 @@
-(straight-use-package 'spacemacs-theme)
-(load-theme 'spacemacs-dark t)
-(setq spacemacs-theme-org-agenda-height nil)
-(setq spacemacs-theme-org-height nil)
+(use-package doom-themes
+  :demand t
+  :config(setq nlinum-highlight-current-line t)
+  :init
+  (load-theme 'doom-Iosvkem t)
+  (doom-themes-neotree-config)
+  (doom-themes-org-config))
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -24,6 +27,7 @@
   :hook(after-init . projectile-mode))
 
 (use-package dired-sidebar
+  :disabled t
   :bind
   ("C-x l" . dired-sidebar-toggle-sidebar)
   :demand t
@@ -36,7 +40,13 @@
   (setq dired-sidebar-use-term-integration t)
   (setq dired-sidebar-theme 'all-the-icons))
 
+(use-package neotree
+  :after doom-themes
+  :bind("C-x l" . neotree-toggle)
+  :hook(after-init . neotree-show))
+
 (use-package centaur-tabs
+  :disabled t
   :demand t
   :hook
   (dashboard-mode . centaur-tabs-local-mode)
