@@ -14,7 +14,7 @@
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 ;; default xemacs configuration directory
-  (defconst toc:xemacs-config-dir "~/dotfiles/emacs/" "")
+  (defconst toc:xemacs-config-dir "~/.config/emacs/" "")
   ;; utility function to auto-load my package configurations
   (defun toc:load-config-file (filelist)
     (dolist (file filelist)
@@ -28,7 +28,7 @@
 			"modes"
 			"snippets"
 			"shell"
-			"prettyfont"
+			"misc"
                          ))
 
 (use-package dash)
