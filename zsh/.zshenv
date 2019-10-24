@@ -1,2 +1,3 @@
-export PATH=$PATH:$HOME/.local/share/bin
+export PATH=$PATH:$HOME/.local/bin
+export XDG_CONFIG_HOME=$HOME/.config
 export EDITOR=nvim

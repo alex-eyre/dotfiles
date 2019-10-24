@@ -1,4 +1,4 @@
-c.fonts.monospace = "FuraCode NF"
+c.fonts.monospace = "'FuraCode NF', 'FiraCode Nerd Font', monospace"
 c.tabs.position = "left"
 c.colors.tabs.bar.bg = "#2c2c2c"
 c.tabs.show = "multiple"

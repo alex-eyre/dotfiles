@@ -81,7 +81,6 @@
    `(org-document-title ((t (,@headline ,@variable-tuple :height 1.25 :underline t))))))
 
 (use-package org
-  :straight nil
   :defer t
   :hook
   (org-mode . visual-line-mode)
