@@ -1,17 +1,14 @@
 (use-package evil
-  :demand t
   :init
   (setq evil-want-keybinding nil)
   (setq evil-want-integration t)
-  :init(evil-mode 1))
+  :hook(after-init . evil-mode))
 
 (use-package evil-collection
   :after evil
-  :demand t
-  :config(evil-collection-init))
+  :init(evil-collection-init))
 
 (use-package evil-leader
-  :demand t
   :after evil
   :init(global-evil-leader-mode)
   :config

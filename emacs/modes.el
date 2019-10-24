@@ -5,12 +5,17 @@
 
 (use-package markdown-mode)
 (use-package auctex
-  :defer t
-  :demand t)
+  :defer t)
 
 (use-package company
-  :demand t
+  :config
+  (setq company-minimum-prefix-length 1)
+  (setq company-idle-delay 0)
+  (setq company-selection-wrap-around t)
+  (company-tng-configure-default)
   :hook(prog-mode . company-mode))
+(use-package company-posframe
+  :hook(company-mode . company-posframe-mode))
 
 (defun evil-ex-define-cmd-local
     (cmd function)
@@ -46,9 +51,13 @@
                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 (use-package mixed-pitch
   :after org
+  :defer t
   :hook(text-mode . mixed-pitch-mode))
 
 (use-package org-bullets
+  :after org
+  :defer t
+  :hook(org-mode . org-bullets-mode)
   :config
   (setq org-bullets-bullet-list '("○" "☉" "◎" "◉" "○" "◌" "◎" "●" "◦" "◯" "⚪" "⚫" "⚬" "❍" "￮" "⊙" "⊚" "⊛" "∙"))
   (set-fontset-font "fontset-default" nil (font-spec :size 10 :name "Symbola")))
@@ -72,12 +81,12 @@
    `(org-document-title ((t (,@headline ,@variable-tuple :height 1.25 :underline t))))))
 
 (use-package org
-  :demand t
-  :straight t
+  :straight nil
+  :defer t
   :hook
   (org-mode . visual-line-mode)
-  (org-mode . org-bullets-mode)
   :config
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
   (setq org-projectile-file "notes.org")
   (evil-ex-define-cmd "frt" 'org-toggle-latex-fragment)
   (evil-ex-define-cmd "html" 'org-html-export-to-html))
