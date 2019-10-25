@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/keysymdef.h>
+#include <X11/XF86keysym.h>
 
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
@@ -63,11 +64,22 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[] = { "qutebrowser", NULL };
 static const char *editorcmd[] = { "emacs", NULL };
 
+static const char *increasebright[] = { "light", "-A", "5", NULL};
+static const char *decreasebright[] = { "light", "-U", "4", NULL};
+
+static const char *increasevol[] = { "amixer", "-q", "sset", "Master", "3%+", NULL };
+static const char *decreasevol[] = { "amixer", "-q", "sset", "Master", "3%-", NULL };
+static const char *togglemute[] = { "amixer", "-q", "sset", "Master", "toggle" };
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-
-	{ MODKEY|ShiftMask,		XK_a,	   spawn,          {.v = { "qutebrowser", NULl } } },
-	{ MODKEY|ShiftMask,		XK_comma,  spawn,          {.v = { "emacs", NULL } } },
+	{ 0,				XF86XK_AudioMute,	spawn,	{.v = togglemute } },
+	{ 0,				XF86XK_AudioRaiseVolume, spawn, {.v = increasevol } },
+	{ 0,				XF86XK_AudioLowerVolume, spawn, {.v = decreasevol } },
+	{ 0,				XF86XK_MonBrightnessUp, spawn, {.v = increasebright } },
+	{ 0,				XF86XK_MonBrightnessDown, spawn, {.v = decreasebright } },
+	{ MODKEY|ShiftMask,		XK_a,	   spawn,          {.v = browsercmd } },
+	{ MODKEY|ShiftMask,		XK_comma,  spawn,          {.v = editorcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY, 	                XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
