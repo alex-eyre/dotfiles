@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+amixer -q sset Master 3%+
+refbar

@@ -67,9 +67,9 @@ static const char *editorcmd[] = { "emacs", NULL };
 static const char *increasebright[] = { "light", "-A", "5", NULL};
 static const char *decreasebright[] = { "light", "-U", "4", NULL};
 
-static const char *increasevol[] = { "amixer", "-q", "sset", "Master", "3%+", NULL };
-static const char *decreasevol[] = { "amixer", "-q", "sset", "Master", "3%-", NULL };
-static const char *togglemute[] = { "amixer", "-q", "sset", "Master", "toggle" };
+static const char *increasevol[] = { "volup", NULL };
+static const char *decreasevol[] = { "voldown", NULL };
+static const char *togglemute[] = { "volmute", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
