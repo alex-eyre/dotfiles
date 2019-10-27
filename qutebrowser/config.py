@@ -1,9 +1,15 @@
 c.fonts.monospace = "'FuraCode NF', 'FiraCode Nerd Font', monospace"
 c.tabs.position = "left"
-c.colors.tabs.bar.bg = "#2c2c2c"
+c.colors.tabs.bar.bg = "#1b1d1e"
+c.colors.statusbar.normal.bg = "#1b1d1e"
+c.colors.statusbar.command.bg = "#1b1d1e"
+c.colors.statusbar.normal.fg = "#fc20bb"
+c.colors.statusbar.url.success.https.fg = "#fc20bb"
+c.colors.completion.even.bg = "#1b1d1e"
+c.colors.completion.odd.bg = "#1b1d1e"
+c.colors.completion.fg = "#dddddd"
 c.tabs.show = "multiple"
 c.tabs.last_close = "default-page"
-c.colors.statusbar.normal.bg = "#2c2c2c"
 
 
 c.url.searchengines = {"DEFAULT": "https://duckduckgo.com?q={}",

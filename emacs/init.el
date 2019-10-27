@@ -92,3 +92,5 @@
  '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
  '(org-verbatim ((t (:inherit (shadow fixed-pitch)))))
  '(variable-pitch ((t (:family "Source Sans Pro" :height 1.0 :weight light)))))
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)

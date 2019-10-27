@@ -5,7 +5,7 @@
   (load-theme 'doom-Iosvkem t)
   (doom-themes-neotree-config)
   (doom-themes-org-config))
-
+(setq ring-bell-function 'ignore)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
@@ -102,7 +102,7 @@
   :hook (after-init . doom-modeline-mode))
 
 (add-to-list 'default-frame-alist
-       '(font . "FiraCode Nerd Font-14"))
+       '(font . "FiraCode Nerd Font-11"))
 (custom-theme-set-faces
  'user
  '(fixed-pitch ((t ( :family "FiraCode Nerd Font" :slant normal :weight normal :height 1.0 :width normal)))))

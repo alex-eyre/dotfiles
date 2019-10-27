@@ -12,13 +12,6 @@ delim="|"
 # testweather checks to see if the most recent forecast is up to date.  If it
 # isn't, it downloads a new weather forecast, then signals to update the
 # statusbar. Gets weather report from wttr.in.
-testweather() { \
-	[ "$(stat -c %y "$HOME/.local/share/weatherreport" 2>/dev/null | cut -d' ' -f1)" != "$(date '+%Y-%m-%d')" ] &&
-		ping -q -c 1 1.1.1.1 >/dev/null &&
-		curl -s "wttr.in/$location" > "$HOME/.local/share/weatherreport" &&
-		notify-send "🌞 Weather" "New weather forecast for today." &&
-		refbar
-		}
 
 # Here is the (big) function that outputs the appearance of the statusbar. It
 # can really be broken down into many submodules which I've commented and
@@ -26,17 +19,10 @@ testweather() { \
 status() { \
 
 	# Get current mpd track filename or artist - title if possible.
-	mpc -f "[[%artist% - ]%title%]|[%file%]" 2>/dev/null | grep -v "volume:" | head -n 1 && echo "$delim"
-
-	# If the weather report is current, show daily precipitation chance,
-	# low and high.  Don't even bother to understand this one unless you
-	# have all day. Takes the weather report format from wttr.in and makes
-	# it look like how I want it for the status bar.
-	[ "$(stat -c %y "$HOME/.local/share/weatherreport" 2>/dev/null | cut -d' ' -f1)" = "$(date '+%Y-%m-%d')" ] &&
-		sed '16q;d' "$HOME/.local/share/weatherreport" | grep -wo "[0-9]*%" | sort -n | sed -e '$!d' | sed -e "s/^/ /g" | tr -d '\n' &&
-		sed '13q;d' "$HOME/.local/share/weatherreport" | grep -o "m\\(-\\)*[0-9]\\+" | sort -n -t 'm' -k 2n | sed -e 1b -e '$!d' | tr '\n|m' ' ' | awk '{print " ",$1 "°","",$2 "°"}' &&
-		echo "$delim"
-
+	cmus_output=$(cmus-remote -Q)
+	artist=$(printf "$cmus_output" | grep "tag artist" | cut -c 12- -)
+	song=$(printf "$cmus_output" | grep "tag title" | cut -c 11- -)
+	printf "$artist - $song $delim" | sed "/ - $delim/d" 
 	# Get the volume of ALSA's master volume output.  Show an icon if or
 	# not muted.
 	amixer get Master | grep -o "[0-9]*%\|\[on\]\|\[off\]" | sed "s/\[on\]//;s/\[off\]//"
@@ -77,10 +63,6 @@ update() { \
 	# everything in dwm. Note entirely sure of the cause, but again, the tr
 	# command easily avoids it.
 	xsetroot -name "$(status | tr '\n' ' ')" &
-    wait
-
-	# Check to see if new weather report is needed.
-	testweather &
     wait
     }
 
