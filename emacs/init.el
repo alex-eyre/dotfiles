@@ -21,7 +21,8 @@
        (message "Loaded config file:%s" file)
        ))
   ;; load my configuration files
-(toc:load-config-file '("keyboard"
+(toc:load-config-file '("prettyfont"
+			"keyboard"
 			"userinterface"
 			"modes"
 			"snippets"

@@ -12,8 +12,10 @@
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message nil)
 (setq initial-major-mode 'text-mode)
-(use-package magit)
 (use-package evil-magit
+  :straight magit
+  :demand magit
+  :after magit
   :init(evil-magit-init))
 
 (use-package projectile
@@ -23,6 +25,9 @@
   (setq projectile-completion-system 'ivy)
   (setq projectile-project-search-path '("~/projects"))
   :hook(after-init . projectile-mode))
+
+(use-package projectile-ripgrep
+  :after projectile)
 
 (use-package dired-sidebar
   :disabled t
@@ -42,45 +47,23 @@
   :bind("C-x l" . neotree-toggle)
   :hook(after-init . neotree-show))
 
-(use-package centaur-tabs
-<<<<<<< HEAD
-  :disabled t
-  :demand t
-=======
->>>>>>> 8b04994f52e9430f383130faffcc5ce30797c130
-  :hook
-  (dashboard-mode . centaur-tabs-local-mode)
-  (term-mode . centaur-tabs-local-mode)
-  (calendar-mode . centaur-tabs-local-mode)
-  (org-agenda-mode . centaur-tabs-local-mode)
-  (helpful-mode . centaur-tabs-local-mode)
+;; Emacs 27+ tabs!
+(use-package tab-line
   :config
-  (defun centaur-tabs-hide-tab (x)
-    (let ((name (format "%s" x)))
-      (or
-       (string-prefix-p "*epc" name)
-       (string-prefix-p "*helm" name)
-       (string-prefix-p "*ivy" name)
-       (string-prefix-p "*Compile-Log*" name)
-       (string-prefix-p "*lsp" name)
-       (string-prefix-p "dired-sidebar*" name)
-       (and (string-prefix-p "magit" name)
-	    (not (file-name-extension name)))
-       )))
-  (centaur-tabs-mode t)
-  (centaur-tabs-headline-match)
-  (setq centaur-tabs-style "bar")
-  (setq centaur-tabs-set-icons t)
-  (setq centaur-tabs-cycle-scope 'tabs)
-  (centaur-tabs-group-by-projectile-project)
+  (setq tab-bar-new-button nil)
   :bind
-  ("C-<prior>" . centaur-tabs-backward-group)
-  ("C-<next>" . centaur-tabs-forward-group)
   (:map evil-normal-state-map
-	("g t" . centaur-tabs-forward)
-	("g T" . centaur-tabs-backward)))
+	("g t" . tab-next)
+	("g T" . tab-previous)))
+
 (use-package ivy
-  :hook(after-init . ivy-mode))
+  :config
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+  (ivy-mode))
+(use-package counsel
+  :defer t
+  :config(counsel-mode))
 
   
 

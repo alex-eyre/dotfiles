@@ -2,7 +2,7 @@
   :init
   (setq evil-want-keybinding nil)
   (setq evil-want-integration t)
-  :hook(after-init . evil-mode))
+  :config(evil-mode))
 
 (use-package evil-collection
   :after evil
@@ -16,5 +16,6 @@
     "p" 'projectile-switch-project
     "o" 'projectile-find-file
     "O" 'projectile-find-file-other-frame
-    "i" 'yas-insert-snippet))
+    "i" 'yas-insert-snippet
+    "q" 'projectile-ripgrep))
 

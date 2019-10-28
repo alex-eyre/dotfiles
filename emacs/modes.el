@@ -25,10 +25,12 @@
   (evil-ex-define-cmd cmd function))
 
 (use-package jedi
+  :after evil
   :hook
   (python-mode . jedi-mode)
   (python-mode . (lambda () (evil-ex-define-cmd-local "goto" #'jedi:goto-definition))))
 (use-package dumb-jump
+  :after evil	     
   :hook
   (prog-mode . dumb-jump-mode)
   (prog-mode . (lambda () (evil-ex-define-cmd-local "goto" #'dumb-jump-go))))
