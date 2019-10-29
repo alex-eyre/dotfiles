@@ -19,10 +19,14 @@ delim="|"
 status() { \
 
 	# Get current mpd track filename or artist - title if possible.
-	cmus_output=$(cmus-remote -Q)
-	artist=$(printf "$cmus_output" | grep "tag artist" | cut -c 12- -)
-	song=$(printf "$cmus_output" | grep "tag title" | cut -c 11- -)
-	printf "$artist - $song $delim" | sed "/ - $delim/d" 
+	cmus_output=$(cmus-remote -Q | sed "s/cmus-remote\: cmus is not running//")
+	if printf "$cmus_output" | grep -q "tag" 
+	then
+		echo yes
+		artist=$(printf "$cmus_output" | grep "tag artist" | cut -c 12- -)
+		song=$(printf "$cmus_output" | grep "tag title" | cut -c 11- -)
+		printf "$artist - $song $delim" | sed "/ - $delim/d" 
+	fi
 	# Get the volume of ALSA's master volume output.  Show an icon if or
 	# not muted.
 	amixer get Master | grep -o "[0-9]*%\|\[on\]\|\[off\]" | sed "s/\[on\]//;s/\[off\]//"
@@ -30,29 +34,37 @@ status() { \
 	echo "$delim"
 
 	# Wifi quality percentage and  icon if ethernet is connected.
-	grep "^\s*w" /proc/net/wireless | awk '{ print "", int($3 * 100 / 70) "%" }'
-	sed "s/down//;s/up//" /sys/class/net/e*/operstate
-
-	# Show unread mail if mutt-wizard is installed.
-	command -v mw >/dev/null 2>&1 &&
-		echo "$delim" &&
-		du -a ~/.local/share/mail/*/INBOX/new/* 2>/dev/null | wc -l | sed 's/^/:/'
+	conn_state=$(connmanctl state | head -n1 | cut -c 11-)
+	if [ "$conn_state" = "online" ]
+	then
+		eth_state=$(connmanctl technologies | grep Connected | head -n1 | cut -c 15- | sed "s/False//;s/True//")
+		echo $eth_state
+		grep "^\s*w" /proc/net/wireless | awk '{ print " ", int($3 * 100 / 70) "%" }'
 		echo "$delim"
+	fi
 
 	# Will show all batteries with approximate icon for remaining power.
 	for x in /sys/class/power_supply/BAT?/capacity;
 	do
 	case "$(cat $x)" in
-		100|9[0-9])	echo "" ;;
-		8[0-9]|7[0-9])	echo "" ;;
-		6[0-9]|5[0-9])	echo "" ;;
-		4[0-9]|3[0-9])	echo "" ;;
-		*)		echo "" ;;
+		100)		echo '' ;;
+		9[0-9])		echo '' ;;
+		8[0-9])		echo '' ;;
+		7[0-9])		echo '' ;;
+		6[0-9])		echo '' ;;
+		5[0-9])		echo '' ;;
+		4[0-9])		echo '' ;;
+		3[0-9])		echo '' ;;
+		2[0-9])		echo '' ;;
+		1[0-9]|0?[0-9])	echo '' ;;
+		*)		echo '' ;;
 	esac
-	done && echo "$delim"
+	cat /sys/class/power_supply/BAT?/status | sed "s/Charging/+/;s/Discharging/-/;s/Unknown/?/"
+	done
+	echo "$delim"
 
 	# Date and time.
-	date '+%Y %b %d (%a) %I:%M%p'
+	date '+%Y-%m-%d %H:%M'
 	}
 
 update() { \
