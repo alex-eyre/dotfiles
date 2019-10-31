@@ -37,8 +37,7 @@ status() { \
 	conn_state=$(connmanctl state | head -n1 | cut -c 11-)
 	if [ "$conn_state" = "online" ]
 	then
-		eth_state=$(connmanctl technologies | grep Connected | head -n1 | cut -c 15- | sed "s/False//;s/True//")
-		echo $eth_state
+		echo $(connmanctl technologies | grep Connected | head -n1 | cut -c 15- | sed "s/False//;s/True//")
 		grep "^\s*w" /proc/net/wireless | awk '{ print " ", int($3 * 100 / 70) "%" }'
 		echo "$delim"
 	fi

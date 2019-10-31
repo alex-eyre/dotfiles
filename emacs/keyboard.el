@@ -19,3 +19,10 @@
     "i" 'yas-insert-snippet
     "q" 'projectile-ripgrep))
 
+(defun setup-input-decode-map ()
+  (define-key input-decode-map (kbd "C-a") (kbd "C-x"))
+  (define-key input-decode-map (kbd "M-a") (kbd "M-x")))
+
+(setup-input-decode-map)
+
+(add-hook 'tty-setup-hook #'setup-input-decode-map)

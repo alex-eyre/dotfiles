@@ -12,6 +12,7 @@ c.colors.completion.fg = "#dddddd"
 c.tabs.show = "multiple"
 c.tabs.last_close = "default-page"
 
+c.downloads.location.directory = "~/downloads"
 
 c.url.searchengines = {"DEFAULT": "https://duckduckgo.com?q={}",
                        "gg": "https://google.co.uk/search?query={}",
@@ -19,7 +20,7 @@ c.url.searchengines = {"DEFAULT": "https://duckduckgo.com?q={}",
                        "scholar": "https://scholar.google.com/scholar?q={}",
                        "wiki": "https://en.wikipedia.org/w/index.php?search={}",
                        "amaz": "https://amazon.co.uk/s?k={}",
-                       "note": "file:///C:/Users/ase/notes/{}.html",
+                       "note": "file:///home/alex/notes/{}.html",
                        "ccwiki": "https://wiki.uk.cambridgeconsultants.com/index.php?search={}"}
 
 c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"
