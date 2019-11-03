@@ -22,7 +22,7 @@ antibody bundle robbyrussell/oh-my-zsh path:plugins/tmux
 
 #VIM is the way my friends
 bindkey -v
-export KEY_TIMEOUT=1
+export KEY_TIMEOUT=0
 antibody bundle robbyrussell/oh-my-zsh path:plugins/vi-mode
 
 # z/fasd init
