@@ -11,6 +11,9 @@ source <(antibody init)
 
 ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
 
+alias sxiv_raw="/usr/bin/sxiv"
+alias sxiv="sxiv -ar"
+
 # Tmux
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOCONNECT=true
@@ -21,9 +24,6 @@ antibody bundle robbyrussell/oh-my-zsh path:plugins/tmux
 bindkey -v
 export KEY_TIMEOUT=1
 antibody bundle robbyrussell/oh-my-zsh path:plugins/vi-mode
-
-# Cargo
-source $HOME/.cargo/env
 
 # z/fasd init
 eval "$(fasd --init auto)"
@@ -52,3 +52,6 @@ SPACESHIP_GIT_STATUS_SHOW=false
 antibody bundle denysdovhan/spaceship-prompt
 spaceship_vi_mode_enable
 setopt correct
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

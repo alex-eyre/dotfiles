@@ -46,8 +46,8 @@ status() { \
 	for x in /sys/class/power_supply/BAT?/capacity;
 	do
 	case "$(cat $x)" in
-		100)		echo '' ;;
-		9[0-9])		echo '' ;;
+		100|99)		echo '' ;;
+		9[0-8])		echo '' ;;
 		8[0-9])		echo '' ;;
 		7[0-9])		echo '' ;;
 		6[0-9])		echo '' ;;

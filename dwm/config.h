@@ -8,14 +8,13 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "ProggyCleanTTSZ Nerd Font:style=Medium:size=12:antialias=false:autohint=true" };
-static const char dmenufont[]       = "monospace:size=10";
 
 
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_gray1[]       = "#1b1d1e";
+static const char col_gray2[]       = "#1b1d1e";
+static const char col_gray3[]       = "#dddddd";
+static const char col_gray4[]       = "#fc20bb";
+static const char col_cyan[]        = "#1b1d1e";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -61,7 +60,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "rofi", "-show", "run", "-modi", "run", "-font", "FiraCode Nerd Font 12", NULL };
+static const char *dmenucmd[] = {"rofi", "-font", "FiraCode Nerd Font 12", "-show", "combi", "-width", "50", "-location", "2", "-lines", "1", "-no-sidebar-mode", "-modi", "window,run,ssh,combi", "-combi-modi", "window,run,ssh", "-theme", "black", NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static const char *browsercmd[] = { "qutebrowser", NULL };

@@ -6,7 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font = "FiraCode Nerd Font:size=12:antialias=true:autohint=true:style=Retina";
-static int borderpx = 2;
+static int borderpx = 0;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -42,8 +42,8 @@ static unsigned int tripleclicktimeout = 600;
 int allowaltscreen = 1;
 
 /* frames per second st should at maximum draw to the screen */
-static unsigned int xfps = 120;
-static unsigned int actionfps = 30;
+static unsigned int xfps = 30;
+static unsigned int actionfps = 10;
 
 /*
  * blinking timeout (set to 0 to disable blinking) for the terminal blinking
@@ -80,7 +80,7 @@ char *termname = "st-256color";
  *
  *	stty tabs
  */
-unsigned int tabspaces = 8;
+unsigned int tabspaces = 4;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
@@ -89,20 +89,20 @@ static const char *colorname[] = {
 	"#d02b61", // red3
 	"#60aa00", // green1
 	"#d08928", // yellow
-	"#57aadd", // blue
-	"magenta3",
-	"cyan3",
-	"gray90",
+	"#6c9ef8", // blue
+	"#b77fdb", // magenta
+	"#00aa80", // cyan
+	"#dddddd", // foreground
 
 	/* 8 bright colors */
 	"gray50",
-	"red",
-	"green",
-	"yellow",
+	"#fc20bb",
+	"#bbfc20",
+	"#d08928",
 	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+	"#b77fdb",
+	"#20bbfc",
+	"#dddddd",
 
 	[255] = 0,
 
@@ -111,11 +111,6 @@ static const char *colorname[] = {
 	"#555555",
 };
 
-
-/*
- * Default colors (colorname index)
- * foreground, background, cursor, reverse cursor
- */
 unsigned int defaultfg = 7;
 unsigned int defaultbg = 0;
 static unsigned int defaultcs = 256;
@@ -128,7 +123,7 @@ static unsigned int defaultrcs = 257;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorshape = 2;
+static unsigned int cursorshape = 6;
 
 /*
  * Default columns and rows numbers

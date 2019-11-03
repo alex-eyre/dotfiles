@@ -29,23 +29,10 @@
 (use-package projectile-ripgrep
   :after projectile)
 
-(use-package dired-sidebar
-  :disabled t
-  :bind
-  ("C-x l" . dired-sidebar-toggle-sidebar)
-  :commands(dired-sidebar-toggle-sidebar)
-  :hook
-  (after-init . dired-sidebar-show-sidebar)
-  :config
-  (evil-ex-define-cmd "swi[tchtosidebar]" 'dired-sidebar-jump-to-sidebar)
-  (setq dired-sidebar-use-custom-font t)
-  (setq dired-sidebar-use-term-integration t)
-  (setq dired-sidebar-theme 'all-the-icons))
-
 (use-package neotree
   :after doom-themes
-  :bind("C-x l" . neotree-toggle)
-  :hook(after-init . neotree-show))
+;;  :hook(after-init . neotree-show)
+  :bind("C-x l" . neotree-toggle))
 
 ;; Emacs 27+ tabs!
 (use-package tab-line
@@ -85,7 +72,7 @@
   :hook (after-init . doom-modeline-mode))
 
 (add-to-list 'default-frame-alist
-       '(font . "FiraCode Nerd Font-11"))
+       '(font . "FiraCode Nerd Font-12"))
 (custom-theme-set-faces
  'user
  '(fixed-pitch ((t ( :family "FiraCode Nerd Font" :slant normal :weight normal :height 1.0 :width normal)))))
