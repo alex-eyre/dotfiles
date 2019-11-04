@@ -9,6 +9,8 @@ fi
 unset _comp_files
 source <(antibody init)
 
+alias tmux="tmux -f $HOME/.config/tmux/tmux.conf"
+
 ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
 
 alias sxiv_raw="/usr/bin/sxiv"
@@ -26,8 +28,7 @@ export KEY_TIMEOUT=0
 antibody bundle robbyrussell/oh-my-zsh path:plugins/vi-mode
 
 # z/fasd init
-eval "$(fasd --init auto)"
-
+eval "$(fasd --init posix-alias zsh-hook)"
 # Completions for exa
 antibody bundle ogham/exa path:contrib/completions.zsh kind:fpath
 ZSH_DISABLE_COMPFIX=true
