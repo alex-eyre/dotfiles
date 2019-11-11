@@ -100,9 +100,14 @@
    `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.2 :underline t))))
    `(org-document-title ((t (,@headline ,@variable-tuple :height 1.25 :underline t))))))
 
+(push '("[ ]" .  "☐") prettify-symbols-alist)
+(push '("[X]" . "☑" ) prettify-symbols-alist)
+(push '("[-]" . "❍" ) prettify-symbols-alist)
 (use-package org
   :defer t
   :hook
+  (text-mode . fira-code-mode)
+  (prog-mode . fira-code-mode)
   (org-mode . visual-line-mode)
   :config
   (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))

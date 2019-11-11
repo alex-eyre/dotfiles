@@ -22,7 +22,6 @@ status() { \
 	cmus_output=$(cmus-remote -Q | sed "s/cmus-remote\: cmus is not running//")
 	if printf "$cmus_output" | grep -q "tag" 
 	then
-		echo yes
 		artist=$(printf "$cmus_output" | grep "tag artist" | cut -c 12- -)
 		song=$(printf "$cmus_output" | grep "tag title" | cut -c 11- -)
 		printf "$artist - $song $delim" | sed "/ - $delim/d" 
