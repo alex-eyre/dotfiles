@@ -1,0 +1,78 @@
+URxvt.font: xft:ProggyCleanTTSZ Nerd Font:size=12:style=Medium:antialias=false:autohint=true
+URxvt.boldFont: xft:ProggyCleanTTSZ Nerd Font:size=12:style=Medium:antialias=false:autohint=true
+URxvt.italicFont: xft:ProggyCleanTTSZ Nerd Font:size=12:style=Medium:antialias=false:autohint=true
+URxvt.boldItalicFont: xft:ProggyCleanTTSZ Nerd Font:size=12:style=Medium:antialias=false:autohint=true
+URxvt.scrollBar: false
+URxvt.lineSpace: 0
+URxvt.geometry: 92x24
+URxvt.internalBorder: 0
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.saveline: 2048
+URxvt.scrollBar_right: false
+URxvt.urgentOnBell: true
+URxvt.depth: 24
+URxvt.iso14755: false
+
+!! Copy Paste & Other Extensions
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
+URxvt.copyCommand: xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.urlLauncher: qutebrowser
+URxvt.underlineURLs: true
+URxvt.urlButton: 1
+
+*foreground:   #dddddd
+*background:   #1b1d1e
+
+!Normal      Bright
+!0 Black      8 Black
+!1 Red        9 Red
+!2 Yellow    10 Yellow
+!3 Green     11 Green
+!4 Blue      12 Blue
+!5 Magenta   13 Magenta
+!6 Cyan      14 Cyan
+!7 White     15 White
+
+! STANDARD COLORS
+! Black
+*color0:	#1b1d1e 
+! Red
+*color1:	#d02b61
+! Yellow
+*color2:	#60aa00
+! Green
+lcolor3:	#d08928
+! Blue
+*color4:	#6c9ef8
+! Magenta
+*color5:	#b77fdb
+! Cyan
+*color6:	#00aa80
+! White
+*color7:	#dddddd
+
+! BRIGHT COLORS
+! Black
+*color8:	#707070
+! Red
+*color9:	#d02b61
+! Yellow
+*color10:	#60aa00
+! Green
+*color11:	#d08928
+! Blue
+*color12:	#6c9ef8
+! Magenta
+*color13:	#b77fdb
+! Cyan
+*color14:	#00aa80
+! White
+*color15:	#ffffff
