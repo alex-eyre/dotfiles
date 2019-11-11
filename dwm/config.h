@@ -61,7 +61,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {"rofi", "-font", "FiraCode Nerd Font 12", "-show", "combi", "-width", "50", "-location", "2", "-lines", "1", "-no-sidebar-mode", "-modi", "window,run,ssh,combi", "-combi-modi", "window,run,ssh", "-theme", "black", NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "urxvt", NULL };
 
 static const char *browsercmd[] = { "qutebrowser", NULL };
 static const char *editorcmd[] = { "emacs", NULL };
@@ -82,7 +82,6 @@ static Key keys[] = {
 	{ 0,				XF86XK_MonBrightnessDown, spawn, {.v = decreasebright } },
 	{ MODKEY,                       XK_s,      togglesticky,   {0} },
 	{ MODKEY|ShiftMask,		XK_a,	   spawn,          {.v = browsercmd } },
-	{ MODKEY|ShiftMask,		XK_comma,  spawn,          {.v = editorcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY, 	                XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
