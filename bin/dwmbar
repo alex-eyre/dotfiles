@@ -18,6 +18,7 @@ delim="|"
 # explained.
 status() { \
 
+
 	# Get current mpd track filename or artist - title if possible.
 	cmus_output=$(cmus-remote -Q | sed "s/cmus-remote\: cmus is not running//")
 	if printf "$cmus_output" | grep -q "tag" 
@@ -26,6 +27,12 @@ status() { \
 		song=$(printf "$cmus_output" | grep "tag title" | cut -c 11- -)
 		printf "$artist - $song $delim" | sed "/ - $delim/d" 
 	fi
+
+	# Disk usage
+
+	df /dev/dm-0 -h | tail -n1 | cut -d " " -f 3- | cut -d "/" -f 1 | xargs
+	echo "$delim"
+
 	# Get the volume of ALSA's master volume output.  Show an icon if or
 	# not muted.
 	amixer get Master | grep -o "[0-9]*%\|\[on\]\|\[off\]" | sed "s/\[on\]//;s/\[off\]//"
@@ -62,7 +69,7 @@ status() { \
 	echo "$delim"
 
 	# Date and time.
-	date '+%Y-%m-%d %H:%M'
+	date '+%Y-%m-%d %H:%M:%S'
 	}
 
 update() { \
@@ -83,6 +90,6 @@ while :; do
 	# again. We run sleep in the background and use wait until it finishes,
     # because traps can interrupt wait immediately, but they can't do that
     # with sleep.
-	sleep 1m &
+	sleep 5s &
     wait
 done

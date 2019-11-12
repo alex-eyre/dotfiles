@@ -4,6 +4,11 @@
   (setq evil-want-integration t)
   :config(evil-mode))
 
+(global-set-key (kbd "C-x |") 'split-window-right)
+(global-set-key (kbd "C-x _") 'split-window-below)
+(use-package ace-window
+  :bind("C-x o" . 'ace-window))
+
 (use-package evil-collection
   :after evil
   :init(evil-collection-init))
