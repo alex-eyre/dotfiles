@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+sed -e '/^\s*#.*$/d' -e '/^\s*$/d' -i $1
