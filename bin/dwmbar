@@ -21,7 +21,7 @@ status() { \
 
 	# Get current mpd track filename or artist - title if possible.
 	cmus_output=$(cmus-remote -Q | sed "s/cmus-remote\: cmus is not running//")
-	if printf "$cmus_output" | grep -q "tag" 
+	if echo "$cmus_output" | grep -q "tag" 
 	then
 		artist=$(printf "$cmus_output" | grep "tag artist" | cut -c 12- -)
 		song=$(printf "$cmus_output" | grep "tag title" | cut -c 11- -)
@@ -71,25 +71,4 @@ status() { \
 	# Date and time.
 	date '+%Y-%m-%d %H:%M:%S'
 	}
-
-update() { \
-	# So all that big status function was just a command that quicking gets
-	# what we want to be the statusbar. This xsetroot command is what sets
-	# it. Note that the tr command replaces newlines with spaces. This is
-	# to prevent some weird issues that cause significant slowing of
-	# everything in dwm. Note entirely sure of the cause, but again, the tr
-	# command easily avoids it.
-	xsetroot -name "$(status | tr '\n' ' ')" &
-    wait
-    }
-
-
-while :; do
-    update
-	# Sleep for a minute after changing the status bar before updating it
-	# again. We run sleep in the background and use wait until it finishes,
-    # because traps can interrupt wait immediately, but they can't do that
-    # with sleep.
-	sleep 5s &
-    wait
-done
+status | tr '\n' ' '

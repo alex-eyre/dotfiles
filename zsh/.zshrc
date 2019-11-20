@@ -45,6 +45,8 @@ ZSH_DISABLE_COMPFIX=true
 # Ergonomic aliases
 antibody bundle robbyrussell/oh-my-zsh folder:plugins/common-aliases
 
+antibody bundle lukechilds/zsh-better-npm-completion
+
 # Replace the ls binds with exa ones
 antibody bundle alex-eyre/zsh-aliases-exa
 
@@ -72,3 +74,5 @@ setopt correct
   fi
 } >> "/dev/null" 2>&1
 
+
+eval "$(pyenv init -)"

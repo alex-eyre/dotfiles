@@ -2,6 +2,11 @@
 (use-package rust-mode)
 (use-package htmlize)
 
+(setq bidi-paragraph-direction 'right-to-left)
+
+(use-package web-mode
+  :hook(html-mode . web-mode))
+(global-whitespace-mode 1)
 (use-package flyspell
   :hook(text-mode . flyspell-mode))
 (cond
@@ -15,10 +20,12 @@
         ;; You could use `("-d" "en_US,en_US-med")` to check with multiple dictionaries
         '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))))
 
+ 
  ((executable-find "aspell")
   (setq ispell-program-name "aspell")
   ;; Please note ispell-extra-args contains ACTUAL parameters passed to aspell
   (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))))
+
 
 
 (use-package markdown-mode)
@@ -44,9 +51,13 @@
 
 (use-package jedi
   :after evil
+  :config(setq python-environment-virtualenv
+	(append python-environment-virtualenv
+		'("--python" "$HOME/.pyenv/shims/python3.7")))
   :hook
   (python-mode . jedi-mode)
   (python-mode . (lambda () (evil-ex-define-cmd-local "goto" #'jedi:goto-definition))))
+
 (use-package dumb-jump
   :after evil	     
   :hook

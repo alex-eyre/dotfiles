@@ -1,7 +1,7 @@
-URxvt.font: xft:ProggyCleanTTSZ Nerd Font:size=12:style=Medium:antialias=false:autohint=true
-URxvt.boldFont: xft:ProggyCleanTTSZ Nerd Font:size=12:style=Medium:antialias=false:autohint=true
-URxvt.italicFont: xft:ProggyCleanTTSZ Nerd Font:size=12:style=Medium:antialias=false:autohint=true
-URxvt.boldItalicFont: xft:ProggyCleanTTSZ Nerd Font:size=12:style=Medium:antialias=false:autohint=true
+URxvt.font: xft:ProggyTinyTT Nerd Font:size=12:style=Book:antialias=false:autohint=true,xft:FiraCode Nerd Font
+URxvt.boldFont: xft:ProggyTinyTT Nerd Font:size=12:style=Book:antialias=false:autohint=true,xft:FiraCode Nerd Font
+URxvt.italicFont: xft:ProggyTinyTT Nerd Font:size=12:style=Book:antialias=false:autohint=true
+URxvt.boldItalicFont: xft:ProggyTinyTT Nerd Font:size=12:style=Book:antialias=false:autohint=true
 URxvt.scrollBar: false
 URxvt.lineSpace: 0
 URxvt.geometry: 92x24

@@ -7,7 +7,7 @@ static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "ProggyCleanTTSZ Nerd Font:style=Medium:size=12:antialias=false:autohint=true" };
+static const char *fonts[]          = { "ProggyTinyTT Nerd Font:style=Medium:size=12:antialias=false:autohint=true" };
 
 
 static const char col_gray1[]       = "#1b1d1e";
@@ -60,7 +60,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = {"rofi", "-font", "FiraCode Nerd Font 12", "-show", "combi", "-width", "50", "-location", "2", "-lines", "1", "-no-sidebar-mode", "-modi", "window,run,ssh,combi", "-combi-modi", "window,run,ssh", "-theme", "black", NULL };
+static const char *dmenucmd[] = {"rofi", "-font", "FiraCode Nerd Font 14", "-show", "combi", "-width", "100", "-location", "2", "-lines", "1", "-no-sidebar-mode", "-modi", "window,run,ssh,combi", "-combi-modi", "window,run,ssh", "-theme", "black", NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
 
 static const char *browsercmd[] = { "qutebrowser", NULL };
