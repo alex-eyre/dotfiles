@@ -14,9 +14,8 @@
 (setq initial-major-mode 'text-mode)
 (use-package evil-magit
   :straight magit
-  :demand magit
   :after magit
-  :init(evil-magit-init))
+  :config(evil-magit-init))
 
 (use-package projectile
   :config
@@ -52,8 +51,6 @@
   :defer t
   :config(counsel-mode))
 
-  
-
 (use-package nlinum-relative
   :init
   (nlinum-relative-setup-evil)
@@ -71,8 +68,3 @@
   (setq find-file-visit-truename t)
   :hook (after-init . doom-modeline-mode))
 
-(add-to-list 'default-frame-alist
-       '(font . "FiraCode Nerd Font-12"))
-(custom-theme-set-faces
- 'user
- '(fixed-pitch ((t ( :family "FiraCode Nerd Font" :slant normal :weight normal :height 1.0 :width normal)))))
