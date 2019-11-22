@@ -1,3 +1,4 @@
+*emacs*font: ProggyTinyTT Nerd Font-12:style=Book:antialias=false:autohint=true,xft:FiraCode Nerd Font
 URxvt.font: xft:ProggyTinyTT Nerd Font:size=12:style=Book:antialias=false:autohint=true,xft:FiraCode Nerd Font
 URxvt.boldFont: xft:ProggyTinyTT Nerd Font:size=12:style=Book:antialias=false:autohint=true,xft:FiraCode Nerd Font
 URxvt.italicFont: xft:ProggyTinyTT Nerd Font:size=12:style=Book:antialias=false:autohint=true

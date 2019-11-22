@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+# Tinos
+cd /tmp
+wget "https://fonts.google.com/download?family=Tinos" -O /tmp/tinos.zip
+7z x /tmp/tinos.zip -o/tmp/tinos
+mkdir -p $HOME/.local/share/fonts/tinos
+cp /tmp/tinos/*.ttf $HOME/.local/share/fonts/tinos/
