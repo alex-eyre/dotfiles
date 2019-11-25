@@ -43,9 +43,9 @@ status() { \
 	conn_state=$(connmanctl state | head -n1 | cut -c 11-)
 	if [ "$conn_state" = "online" ]
 	then
-		echo $(connmanctl technologies | grep Connected | head -n1 | cut -c 15- | sed "s/False//;s/True//")
+		echo $(connmanctl technologies | grep Connected | head -n1 | cut -c 15- | sed "s/False//;s/True/ /")
 		grep "^\s*w" /proc/net/wireless | awk '{ print " ", int($3 * 100 / 70) "%" }'
-		echo "$delim"
+		echo " $delim"
 	fi
 
 	# Will show all batteries with approximate icon for remaining power.
