@@ -20,7 +20,7 @@ function msf() {
 	pushd $HOME/.local/share/metasploit-framework && ./$1 && popd
 }
 
-alias tmux="tmux -f $HOME/.config/tmux/tmux.conf"
+alias irssi='/usr/bin/irssi --config="$XDG_CONFIG_HOME"/irssi/config --home="$XDG_DATA_HOME"'
 
 ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
 
@@ -31,6 +31,8 @@ alias sxiv="sxiv -ar"
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOCONNECT=true
 ZSH_TMUX_AUTOQUIT=true
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+ZSH_TMUX_CONFIG=$HOME/.config/tmux/tmux.conf
 antibody bundle robbyrussell/oh-my-zsh path:plugins/tmux
 
 #VIM is the way my friends

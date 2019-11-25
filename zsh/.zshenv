@@ -1,10 +1,14 @@
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_RUNTIME_DIR=/tmp
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CACHE_HOME=$XDG_DATA_HOME/tmp
 
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+
+export HISTFILE="$XDG_DATA_HOME"/zsh/history
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export DOTFILES=$HOME/.local/dotfiles
 export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$(ruby -e 'puts Gem.user_dir')/bin
 export PATH=$PATH:$HOME/.local/share/latex/bin/x86_64-linux
-export XDG_CONFIG_HOME=$HOME/.config
 export PATH=$(pyenv root)/bin:$PATH
+export ANDROID_SDK_HOME="$XDG_CONFIG_HOME"/android
