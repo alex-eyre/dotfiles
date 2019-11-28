@@ -1,5 +1,7 @@
 cd $HOME
 autoload -Uz compinit
+autoload -U bashcompinit
+bashcompinit
 _comp_files=(${ZDOTDIR:-$HOME}/.zcompdump(Nm-20))
 if (( $#_comp_files )); then
 	  compinit -i -C
@@ -7,15 +9,16 @@ if (( $#_comp_files )); then
 	  compinit -i
 fi
 unset _comp_files
+source "$XDG_CONFIG_HOME/zsh/python-argcomplete.sh"
+
+
 source <(antibody init)
 
-function terminusbrowser() {
-	pushd $HOME/.local/share/TerminusBrowser
-	source venv/bin/activate
-	python TerminusBrowser.py
-	deactivate
-	popd
+function e() {
+	file=$(fzf +m -q ${@:1}) &&
+	emacs $file
 }
+
 function msf() {
 	pushd $HOME/.local/share/metasploit-framework && ./$1 && popd
 }
@@ -35,11 +38,6 @@ export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 ZSH_TMUX_CONFIG=$HOME/.config/tmux/tmux.conf
 antibody bundle robbyrussell/oh-my-zsh path:plugins/tmux
 
-#VIM is the way my friends
-bindkey -v
-export KEY_TIMEOUT=0
-antibody bundle robbyrussell/oh-my-zsh path:plugins/vi-mode
-
 # Completions for exa
 antibody bundle ogham/exa path:contrib/completions.zsh kind:fpath
 ZSH_DISABLE_COMPFIX=true
@@ -48,6 +46,14 @@ ZSH_DISABLE_COMPFIX=true
 antibody bundle robbyrussell/oh-my-zsh folder:plugins/common-aliases
 
 antibody bundle lukechilds/zsh-better-npm-completion
+
+function zle-line-init(){
+	echoti rmkx
+}
+zle -N zle-line-init
+
+export ATHAME_ENABLED=1
+export ATHAME_SHOW_MODE=1
 
 # Replace the ls binds with exa ones
 antibody bundle alex-eyre/zsh-aliases-exa
@@ -67,7 +73,6 @@ SPACESHIP_GIT_SHOW=false
 SPACESHIP_GIT_BRANCH_SHOW=false
 SPACESHIP_GIT_STATUS_SHOW=false
 antibody bundle denysdovhan/spaceship-prompt
-spaceship_vi_mode_enable
 setopt correct
 
 { if [ "$ZSH_VERSION" ] && compctl; then # zsh
@@ -78,3 +83,5 @@ setopt correct
 
 
 eval "$(pyenv init -)"
+
+unset zle_bracketed_paste
