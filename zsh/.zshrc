@@ -19,6 +19,18 @@ function e() {
 	emacs $file
 }
 
+function t() {
+	cd $(mktemp -d /tmp/$1.XXXX)
+}
+
+alias gcommit="GIT_COMMITER_EMAIL=alex.eyre@cambridgeconsultants.com git commit"
+alias gcommit_personal="GIT_COMMITER_EMAIL=alexeeyre@gmail.com git commit"
+
+function dot() {
+	file=$(cd ~/.local/dotfiles && fzf +m) &&
+	emacs ~/.local/dotfiles/$file | cd -
+}
+
 function msf() {
 	pushd $HOME/.local/share/metasploit-framework && ./$1 && popd
 }
@@ -47,20 +59,27 @@ antibody bundle robbyrussell/oh-my-zsh folder:plugins/common-aliases
 
 antibody bundle lukechilds/zsh-better-npm-completion
 
-function zle-line-init(){
-	echoti rmkx
-}
-zle -N zle-line-init
-
-export ATHAME_ENABLED=1
-export ATHAME_SHOW_MODE=1
-
 # Replace the ls binds with exa ones
 antibody bundle alex-eyre/zsh-aliases-exa
 
 # Git extensions
 antibody bundle robbyrussell/oh-my-zsh path:plugins/git
 antibody bundle robbyrussell/oh-my-zsh path:lib/git.zsh
+
+
+# Vim
+bindkey -v
+MODE_CURSOR_VICMD="#fc20bb block"
+MODE_CURSOR_VIINS="#fc20bb blinking bar"
+MODE_CURSOR_SEARCH="#fc20bb steady underline"
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+antibody bundle softmoth/zsh-vim-mode
+export KEYTIMEOUT=1
+
 
 # Prompt
 SPACESHIP_PROMPT_ADD_NEWLINE=false
@@ -83,5 +102,3 @@ setopt correct
 
 
 eval "$(pyenv init -)"
-
-unset zle_bracketed_paste

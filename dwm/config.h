@@ -30,7 +30,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "\ue795", "\ue779", "\ufa9e", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1", "2", "3" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -38,8 +38,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "qutebrowser", 	NULL,		NULL,		1 << 2, 0, -1},
-	{ NULL, 	"emacs",		NULL,		1 << 1, 0, -1},
+	{ NULL,	NULL,	NULL,	NULL,	NULL,	NULL, NULL},
 };
 
 /* layout(s) */

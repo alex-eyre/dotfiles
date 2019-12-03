@@ -1,5 +1,7 @@
 (use-package evil
-  :init(evil-mode 1))
+  :init
+  (setq evil-want-keybinding nil)
+  (evil-mode 1))
 
 (use-package evil-leader
   :after evil
@@ -11,3 +13,6 @@
     "O" 'projectile-find-file-other-frame
     "i" 'yas-insert-snippet
     "q" 'projectile-ripgrep))
+(use-package evil-collection
+  :after evil
+  :init(evil-collection-init))

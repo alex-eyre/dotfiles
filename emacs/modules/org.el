@@ -7,6 +7,15 @@
   :hook
   (org-mode . (lambda () (sublimity-mode 1)))
   (prog-mode . (lambda () (sublimity-mode 0))))
+
+(use-package evil-org
+  :config
+  (require 'evil-org-agenda)
+  (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
+  (evil-org-agenda-set-keys)
+  :hook
+  (org-mode . evil-org-mode))
+			  
 					 
   
 (use-package org
@@ -48,7 +57,8 @@
 	org-fontify-quote-and-verse-blocks t)
   :hook
   (org-mode . (lambda () (progn
-			   (linum-mode 0)
+			   (remove-hook 'evil-insert-state-exit-hook 'nlinum-relative-mode t)
+			   (nlinum-mode -1)
 			   (load-theme 'doom-one-light t)
 			   (doom-themes-org-config)
 			   (do-margins t)
