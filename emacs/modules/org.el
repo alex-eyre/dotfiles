@@ -59,19 +59,16 @@
   (org-mode . (lambda () (progn
 			   (remove-hook 'evil-insert-state-exit-hook 'nlinum-relative-mode t)
 			   (nlinum-mode -1)
-			   (load-theme 'doom-one-light t)
-			   (doom-themes-org-config)
 			   (do-margins t)
 			   (setq line-spacing 0.1
 				 header-line-format " "))))
   (prog-mode . (lambda () (progn
-			   (load-theme 'doom-Iosvkem t)
-			   (doom-themes-org-config)
-			   (do-margins nil)
+			    (do-margins nil)
 			    (setq line-spacing nil
 				  header-line-format nil))))
   (org-mode . hide-mode-line-mode)
   (org-mode . visual-line-mode))
+
 
 (use-package mixed-pitch
   :straight(mixed-pitch :type git :host gitlab :repo "jabranham/mixed-pitch")
