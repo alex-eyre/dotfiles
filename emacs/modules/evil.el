@@ -16,3 +16,9 @@
 (use-package evil-collection
   :after evil
   :init(evil-collection-init))
+(use-package evil-snipe
+  :hook
+  (after-init . (lambda () (evil-snipe-mode +1)))
+  :config
+  (push 'magit-mode evil-snipe-disabled-modes))
+  
