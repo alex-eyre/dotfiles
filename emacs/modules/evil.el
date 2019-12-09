@@ -1,4 +1,7 @@
 (use-package evil
+  :config
+  (evil-ex-define-cmd "q" 'kill-this-buffer)
+  (evil-ex-define-cmd "quit" 'evil-quit)
   :init
   (setq evil-want-keybinding nil)
   (evil-mode 1))

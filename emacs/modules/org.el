@@ -24,12 +24,13 @@
   :config
   (evil-leader/set-key
     "e" 'org-toggle-latex-fragment)
-  (setq org-latex-pdf-process (list "latexmk -pdflatex=xelatex -f -pdf %f"))
-  (setq TeX-engine 'xetex)
+  (setq org-html-postamble nil
+	org-latex-pdf-process (list "latexmk -pdflatex=xelatex -f -pdf %f")
+	TeX-engine 'xetex
 
-  (setq org-preview-latex-default-process 'imagemagick
-        org-preview-latex-process-alist
-        '((imagemagick :programs ("xelatex" "convert")
+	org-preview-latex-default-process 'imagemagick
+	org-preview-latex-process-alist
+	'((imagemagick :programs ("xelatex" "convert")
                        :description "pdf > png"
                        :message "you need to install the programs: xelatex and imagemagick."
                        :use-xcolor t
@@ -41,11 +42,9 @@
         org-format-latex-options
         '(:foreground "Black" :background "Transparent" :scale 1.0
                       :html-foreground "Black" :html-background "Transparent"
-                      :html-scale 1.0 :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
+                      :html-scale 1.0 :matchers ("begin" "$1" "$" "$$" "\\(" "\\["))
 
-  (set-face-attribute 'org-table nil
-			     :height 0.9)
-  (setq org-startup-indented t
+	org-startup-indented t
 	org-bullets-bullet-list '(" ") ;; no bullets, needs org-bullets package
 	org-ellipsis "  " ;; folding symbol
 	org-pretty-entities t
@@ -55,6 +54,8 @@
 	org-fontify-whole-heading-line t
 	org-fontify-done-headline t
 	org-fontify-quote-and-verse-blocks t)
+  (set-face-attribute 'org-table nil
+			     :height 0.9)
   :hook
   (org-mode . (lambda () (progn
 			   (remove-hook 'evil-insert-state-exit-hook 'nlinum-relative-mode t)
