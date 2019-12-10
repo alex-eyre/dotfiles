@@ -1,1 +1,2 @@
-(use-package eglot)
+(use-package eglot
+  :defer t)
