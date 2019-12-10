@@ -1,0 +1,8 @@
+Print
+	maim pic-full-$(date '+%y%m%d-%H%M-%S').png
+shift + Print
+	maimpick Recording
+super + Print
+	maim -s pic-region-$(date '+%y%m%d-%H%M-%S').png
+super + shift + p
+	rofi-gopass
