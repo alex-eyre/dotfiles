@@ -17,8 +17,7 @@ delim="|"
 # can really be broken down into many submodules which I've commented and
 # explained.
 status() { \
-
-
+	cat /proc/acpi/bbswitch | cut -d " " -f 2 | sed "s/ON/GPU Enabled $delim/;s/OFF//"
 	# Get current mpd track filename or artist - title if possible.
 	cmus_output=$(cmus-remote -Q | sed "s/cmus-remote\: cmus is not running//")
 	if echo "$cmus_output" | grep -q "tag" 
@@ -37,15 +36,15 @@ status() { \
 	# not muted.
 	amixer get Master | grep -o "[0-9]*%\|\[on\]\|\[off\]" | sed "s/\[on\]//;s/\[off\]//"
 
-	echo "$delim"
+	echo " $delim"
 
 	# Wifi quality percentage and  icon if ethernet is connected.
 	conn_state=$(connmanctl state | head -n1 | cut -c 11-)
 	if [ "$conn_state" = "online" ]
 	then
-		echo $(connmanctl technologies | grep Connected | head -n1 | cut -c 15- | sed "s/False//;s/True/ /")
+		echo $(connmanctl technologies | grep Connected | head -n1 | cut -c 15- | sed "s/False//;s/True/ /")
 		grep "^\s*w" /proc/net/wireless | awk '{ print " ", int($3 * 100 / 70) "%" }'
-		echo " $delim"
+		echo "$delim"
 	fi
 
 	# Will show all batteries with approximate icon for remaining power.
