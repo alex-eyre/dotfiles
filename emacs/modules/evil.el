@@ -4,7 +4,7 @@
   (evil-ex-define-cmd "quit" 'evil-quit)
   :init
   (setq evil-want-keybinding nil)
-  (evil-mode 1))
+  :hook(after-init . evil-mode))
 
 (use-package evil-leader
   :after evil
@@ -20,8 +20,9 @@
   :after evil
   :init(evil-collection-init))
 (use-package evil-snipe
+  :defer 2
   :hook
-  (after-init . (lambda () (evil-snipe-mode +1)))
+  (evil-mode . (lambda () (evil-snipe-mode +1)))
   :config
   (push 'magit-mode evil-snipe-disabled-modes))
   

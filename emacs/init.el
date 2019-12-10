@@ -1,4 +1,5 @@
 ;; bootstrap straight.el
+(setq gc-cons-threshold (* 50 1000 1000))
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -32,3 +33,4 @@
        ((and (eq isdir nil) (string= (substring path -3) ".el"))
         (load (file-name-sans-extension fullpath)))))))
 (load-directory (expand-file-name (concat config-dir "/modules")))
+(setq gc-cons-threshold (* 2 1000 1000))
