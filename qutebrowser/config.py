@@ -12,6 +12,11 @@ c.colors.completion.fg = "#dddddd"
 c.tabs.show = "multiple"
 c.tabs.last_close = "default-page"
 
+config.bind(",m", "hint links spawn umpv {hint-url}")
+config.bind(",M", "hint links spawn umpv-bluetooth {hint-url}")
+config.bind(";m", "hint --rapid links spawn umpv {hint-url}")
+config.bind(";M", "hint --rapid links spawn umpv-bluetooth {hint-url}")
+
 c.downloads.location.directory = "~/downloads"
 
 c.url.searchengines = {"DEFAULT": "https://searx.me/?q={}",
@@ -31,7 +36,7 @@ c.content.headers.custom = {"accept": "text/html,application/xhtml+xml,applicati
 
 config.bind("xt", "config-cycle tabs.show never multiple")
 
-c.fonts.statusbar = "11pt monospace"
-c.fonts.completion.category = "bold 11pt monospace"
-c.fonts.completion.entry = "11pt monospace"
-c.fonts.downloads = "11pt monospace"
+c.fonts.statusbar = "12pt monospace"
+c.fonts.completion.category = "bold 12pt monospace"
+c.fonts.completion.entry = "12pt monospace"
+c.fonts.downloads = "12pt monospace"
