@@ -4,5 +4,77 @@ shift + Print
 	maimpick Recording
 super + Print
 	maim -s pic-region-$(date '+%y%m%d-%H%M-%S').png
+super + p
+	rofi -font "FiraCode Nerd Font 14" -width 100 -location 2 -lines 5 -no-sidebar-mode -theme black rofi -show combi -modi combi,run,ssh,window -combi-modi run,ssh,window
 super + shift + p
 	rofi-gopass
+super + Return
+	kitty
+super + shift + q
+	killall Xorg
+super + shift + c
+	bspc node -k
+
+
+XF86AudioMute
+	amixer sset Master toggle >/dev/null
+XF86Audio{Raise,Lower}Volume
+	amixer sset Master 5%{+,-} >/dev/null
+XF86MonBrightnessDown
+	light -U 5%
+XF86MonBrightnessUp
+	light -A 5%
+
+super + space
+      	bspc node -t "~floating"
+super + {grave,Tab}
+	bspc {window,desktop} -f last
+
+super + shift + Return
+	bspc node -s biggest
+
+super + {h,j,k,l}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + shift + {h,j,k,l}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+
+super + ampersand
+	bspc desktop -f 1
+super + bracketleft
+	bspc desktop -f 2
+super + braceleft
+	bspc desktop -f 3
+super + braceright
+	bspc desktop -f 4
+super + parenleft
+	bspc desktop -f 5
+super + equal
+	bspc desktop -f 6
+super + asterisk
+	bspc desktop -f 7
+super + parenright
+	bspc desktop -f 8
+super + plus
+	bspc desktop -f 9
+
+super + shift + ampersand
+	bspc node -d 1
+super + shift + bracketleft
+	bspc node -d 2
+super + shift + braceleft
+	bspc node -d 3
+super + shift + braceright
+	bspc node -d 4
+super + shift + parenleft
+	bspc node -d 5
+super + shift + equal
+	bspc node -d 6
+super + shift + asterisk
+	bspc node -d 7
+super + shift + parenright
+	bspc node -d 8
+super + shift + plus
+	bspc node -d 9

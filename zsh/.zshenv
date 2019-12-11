@@ -1,5 +1,4 @@
 export XDG_CONFIG_HOME=$HOME/.config
-export XDG_RUNTIME_DIR=$(mktemp -d /tmp/alex.XXXX)
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_CACHE_HOME=$XDG_DATA_HOME/tmp
 
