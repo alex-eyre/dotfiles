@@ -21,6 +21,8 @@ ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SL
 
 # Tmux
 if [ "$TERM" != "eterm-color" ]; then
+    ZSH_TMUX_AUTOSTART=true
+    ZSH_TMUX_AUTOCONNECT=true
     ZSH_TMUX_AUTOQUIT=true
     export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
     ZSH_TMUX_CONFIG=$HOME/.config/tmux/tmux.conf
