@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+setxkbmap -layout us -variant dvp -option caps:super &
+setxkbmap -option caps:super &
+nitrogen --set-auto $HOME/images/mountains.jpg &
+xrdb -load $XDG_CONFIG_HOME/X11/xresources &
+sxhkd -m 1 &
+xcalib $HOME/.local/share/LP156WF6_SPK1.icm &
+unclutter --timeout 1 --ignore-scrolling &
+xset r rate 300 75 &
