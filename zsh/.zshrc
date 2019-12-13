@@ -10,6 +10,11 @@ fi
 unset _comp_files
 source <(antibody init)
 
+function restart_polybar(){
+	killall polybar > /dev/null
+	polybar -c $HOME/.config/polybar/config.ini status_top &!
+}
+
 function t() {
 	cd $(mktemp -d /tmp/$1.XXXX)
 }
