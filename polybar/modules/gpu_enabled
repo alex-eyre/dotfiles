@@ -1,0 +1,6 @@
+#!/bin/sh
+if grep -q ON /proc/acpi/bbswitch; then
+	echo "GPU Enabled"
+else
+	echo ""
+fi
