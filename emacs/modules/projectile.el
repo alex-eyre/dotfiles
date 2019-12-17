@@ -1,5 +1,7 @@
 (use-package projectile
-  :defer 1
+  :hook(after-init . (lambda () (projectile-discover-projects-in-search-path)))
   :config
-  (setq projectile-completion-system 'ivy)
-  (setq projectile-project-search-path '("~/projects")))
+  (setq projectile-completion-system 'ivy
+	projectile-project-search-path '("~/projects")
+	projectile-indexing-method 'alien))
+

@@ -1,12 +1,12 @@
 (use-package sublimity
+  :disabled t
   :straight(sublimity :type git :host github :repo "zk-phi/sublimity")
   :straight(sublimity-attractive :type git :host github :repo "zk-phi/sublimity")
   :config
   (require 'sublimity)
   (require 'sublimity-attractive)
   :hook
-  (org-mode . (lambda () (sublimity-mode 1)))
-  (prog-mode . (lambda () (sublimity-mode 0))))
+  (org-mode . sublimity-mode))
 
 (use-package evil-org
   :config
@@ -20,7 +20,6 @@
   
 (use-package org
   :straight(org :type built-in)
-  :straight spacemacs-theme
   :config
   (evil-leader/set-key
     "e" 'org-toggle-latex-fragment)
@@ -58,8 +57,6 @@
 			     :height 0.9)
   :hook
   (org-mode . (lambda () (progn
-			   (remove-hook 'evil-insert-state-exit-hook 'nlinum-relative-mode t)
-			   (nlinum-mode -1)
 			   (do-margins t)
 			   (setq line-spacing 0.1
 				 header-line-format " "))))

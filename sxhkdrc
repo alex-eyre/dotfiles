@@ -13,7 +13,10 @@ super + Return
 super + shift + q
 	killall Xorg
 super + shift + c
-	bspc node -k
+	bspc node -c
+
+super + s
+	bspc node -g sticky
 
 
 XF86AudioMute

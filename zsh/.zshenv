@@ -10,6 +10,7 @@ export DOTFILES=$HOME/.local/dotfiles
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.local/share/latex/bin/x86_64-linux
 export PATH=$(pyenv root)/bin:$PATH
+export PATH=$PATH:$HOME/.cargo/bin
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME"/android
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1 # Microsoft can fuck off

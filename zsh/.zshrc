@@ -67,19 +67,10 @@ if [ "$TERM" != "eterm-color" ]; then
 fi
 
 
-# # Prompt
-# SPACESHIP_RUST_SYMBOL="\ue7a8"
-# SPACESHIP_PROMPT_ADD_NEWLINE=false
-# SPACESHIP_PROMPT_SEPARATE_LINE=false
-# SPACESHIP_CHAR_SYMBOL="\ufb26"
-# SPACESHIP_CHAR_SUFFIX="] "
-# SPACESHIP_CHAR_PREFIX="["
-# SPACESHIP_GIT_SHOW=false
-# SPACESHIP_GIT_BRANCH_SHOW=false
-# SPACESHIP_GIT_STATUS_SHOW=false
-# antibody bundle denysdovhan/spaceship-prompt
-AGKOZAK_MULTILINE=0
-AGKOZAK_MULTILINE=0
-AGKOZAK_PROMPT_CHAR=( λ %# : )
-
-antibody bundle agkozak/agkozak-zsh-prompt
+# Prompt
+if [ "$TERM" != "eterm-color" ]; then
+	AGKOZAK_MULTILINE=0
+	AGKOZAK_MULTILINE=0
+	AGKOZAK_PROMPT_CHAR=( λ %# : )
+	antibody bundle agkozak/agkozak-zsh-prompt
+fi

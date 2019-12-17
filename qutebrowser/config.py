@@ -12,6 +12,9 @@ c.colors.completion.fg = "#dddddd"
 c.tabs.show = "multiple"
 c.tabs.last_close = "default-page"
 
+c.qt.args = ['force-webrtc-ip-handling-policy=disable_non_proxied_udp']
+c.content.webrtc_ip_handling_policy = "disable-non-proxied-udp"
+
 config.bind(",m", "hint links spawn umpv {hint-url}")
 config.bind(",M", "hint links spawn umpv-bluetooth {hint-url}")
 config.bind(";m", "hint --rapid links spawn umpv {hint-url}")
@@ -35,7 +38,7 @@ c.content.headers.accept_language = "en-US,en;q=0.5"
 
 config.bind("xt", "config-cycle tabs.show never multiple")
 
-c.fonts.statusbar = "12pt monospace"
-c.fonts.completion.category = "bold 12pt monospace"
-c.fonts.completion.entry = "12pt monospace"
-c.fonts.downloads = "12pt monospace"
+c.fonts.statusbar = "14pt monospace"
+c.fonts.completion.category = "bold 14pt monospace"
+c.fonts.completion.entry = "14pt monospace"
+c.fonts.downloads = "14pt monospace"
