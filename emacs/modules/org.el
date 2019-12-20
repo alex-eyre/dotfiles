@@ -1,5 +1,4 @@
 (use-package sublimity
-  :disabled t
   :straight(sublimity :type git :host github :repo "zk-phi/sublimity")
   :straight(sublimity-attractive :type git :host github :repo "zk-phi/sublimity")
   :config
