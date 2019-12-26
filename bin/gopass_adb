@@ -1,4 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 gopass -c $1
-adb shell input text $(xclip -out -selection clipboard)
+output=$(xclip -out -selection clipboard)
+output=$(builtin printf "%q" $output)
+adb shell input text $output
 echo '' | xclip -selection clipboard

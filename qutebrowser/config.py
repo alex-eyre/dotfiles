@@ -22,6 +22,8 @@ config.bind(";M", "hint --rapid links spawn umpv-bluetooth {hint-url}")
 
 c.downloads.location.directory = "~/downloads"
 
+c.content.host_blocking.lists.append("https://block.energized.pro/unified/formats/hosts")
+
 c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
                        "gg": "https://google.co.uk/search?query={}",
                        "yt": "https://youtube.com/results?search_query={}",
