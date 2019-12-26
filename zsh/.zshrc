@@ -1,3 +1,4 @@
+fortune | lolcat
 autoload -Uz compinit
 autoload -U bashcompinit
 bashcompinit
@@ -29,8 +30,8 @@ if [ "$TERM" != "eterm-color" ]; then
     ZSH_TMUX_AUTOSTART=true
     ZSH_TMUX_AUTOCONNECT=true
     ZSH_TMUX_AUTOQUIT=true
-    export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
     ZSH_TMUX_CONFIG=$HOME/.config/tmux/tmux.conf
+    export ZSH_TMPDIR=$XDG_RUNTIME_DIR
     antibody bundle robbyrussell/oh-my-zsh path:plugins/tmux
 fi
 
