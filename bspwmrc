@@ -21,5 +21,6 @@ bspc config top_padding 22
 bspc config focus_follows_pointer true
 
 bspc rule -a Emacs state=tiled
+bspc rule -a Zathura state=tiled
 
 echo Loaded!

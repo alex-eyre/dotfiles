@@ -5,11 +5,11 @@
   :config
   (set-face-attribute 'variable-pitch nil 
 		      :family "Tinos"
-		      :height 1.1
+		      :height 1.0
 		      :background nil)
   (set-face-attribute 'org-document-title nil
 		       :inherit 'variable-pitch
-		       :height 1.5)
+		       :height 2.0)
   (set-face-attribute 'org-level-1 nil
 		      :inherit 'variable-pitch
 		      :height 1.4)

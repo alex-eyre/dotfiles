@@ -4,3 +4,6 @@
 (setup-input-decode-map)
 (global-set-key (kbd "C-x |") (lambda () (interactive)(split-window-horizontally) (other-window 1)))
 (global-set-key (kbd "C-x _") (lambda () (interactive)(split-window-vertically) (other-window 1)))
+(global-set-key (kbd "C-x \\") (lambda () (interactive)(split-window-horizontally) (other-window 1)))
+(global-set-key (kbd "C-x -") (lambda () (interactive)(split-window-vertically) (other-window 1)))
+

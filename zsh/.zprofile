@@ -3,3 +3,5 @@ if [ "$(tty)" = /dev/tty1 ]; then
     export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
     exec startx
 fi
+
+export PATH="$HOME/.cargo/bin:$PATH"

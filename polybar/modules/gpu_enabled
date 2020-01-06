@@ -1,6 +1,2 @@
 #!/bin/sh
-if grep -q ON /proc/acpi/bbswitch; then
-	echo "GPU Enabled"
-else
-	echo ""
-fi
+cat /proc/acpi/bbswitch | cut -d " " -f 2 | sed "s/ON/GPU Enabled/;s/OFF//"

@@ -22,6 +22,8 @@ config.bind(";M", "hint --rapid links spawn umpv-bluetooth {hint-url}")
 
 c.downloads.location.directory = "~/downloads"
 
+c.content.host_blocking.lists.append("https://block.energized.pro/unified/formats/hosts")
+
 c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
                        "gg": "https://google.co.uk/search?query={}",
                        "yt": "https://youtube.com/results?search_query={}",
@@ -30,7 +32,8 @@ c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
                        "amaz": "https://amazon.co.uk/s?k={}",
                        "note": "file:///home/alex/notes/{}.html",
                        "ccwiki": "https://wiki.uk.cambridgeconsultants.com/index.php?search={}",
-                       "dict": "https://en.wiktionary.org/w/index.php?search={}"}
+                       "dict": "https://en.wiktionary.org/w/index.php?search={}",
+                       "apkmirror": "https://www.apkmirror.com/?s={}"}
 
 c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"
 c.content.headers.accept_language = "en-US,en;q=0.5"
