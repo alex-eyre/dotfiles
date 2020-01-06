@@ -19,6 +19,10 @@ function t() {
 	cd $(mktemp -d /tmp/$1.XXXX)
 }
 
+
+# Luke's experiment
+preexec() { clear }
+
 alias gcommit="GIT_COMMITER_EMAIL=alex.eyre@cambridgeconsultants.com git commit"
 alias gcommit_personal="GIT_COMMITER_EMAIL=alexeeyre@gmail.com git commit"
 
@@ -33,6 +37,8 @@ if [ "$TERM" != "eterm-color" ]; then
     ZSH_TMUX_CONFIG=$HOME/.config/tmux/tmux.conf
     antibody bundle robbyrussell/oh-my-zsh path:plugins/tmux
 fi
+
+antibody bundle zsh-users/zsh-completions
 
 # Completions for exa
 antibody bundle ogham/exa path:contrib/completions.zsh kind:fpath
