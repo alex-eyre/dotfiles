@@ -17,10 +17,16 @@ super + shift + q
 super + shift + c
 	bspc node -c
 
+super + e
+	rofi-surfraw
+
 super + s
 	bspc node -g sticky && bspc node -g locked && bspc node -g private
 super + shift + s
 	pip_focused
+
+super + f
+	bspc node -t \~fullscreen
 
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -44,41 +50,40 @@ super + ctrl {h,j,k,l}
 super + shift + {h,j,k,l}
     bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
-
 super + ampersand
-	bspc desktop -f 1
+	bspc desktop -f I
 super + bracketleft
-	bspc desktop -f 2
+	bspc desktop -f II
 super + braceleft
-	bspc desktop -f 3
+	bspc desktop -f III
 super + braceright
-	bspc desktop -f 4
+	bspc desktop -f IV
 super + parenleft
-	bspc desktop -f 5
+	bspc desktop -f V
 super + equal
-	bspc desktop -f 6
+	bspc desktop -f VI
 super + asterisk
-	bspc desktop -f 7
+	bspc desktop -f VII
 super + parenright
-	bspc desktop -f 8
+	bspc desktop -f VIII
 super + plus
-	bspc desktop -f 9
+	bspc desktop -f IX
 
 super + shift + ampersand
-	bspc node -d 1
+	bspc node -d I
 super + shift + bracketleft
-	bspc node -d 2
+	bspc node -d II
 super + shift + braceleft
-	bspc node -d 3
+	bspc node -d II
 super + shift + braceright
-	bspc node -d 4
+	bspc node -d IV
 super + shift + parenleft
-	bspc node -d 5
+	bspc node -d V
 super + shift + equal
-	bspc node -d 6
+	bspc node -d VI
 super + shift + asterisk
-	bspc node -d 7
+	bspc node -d VII
 super + shift + parenright
-	bspc node -d 8
+	bspc node -d VIII
 super + shift + plus
-	bspc node -d 9
+	bspc node -d IX
