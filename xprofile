@@ -1,6 +1,4 @@
 #!/usr/bin/env sh
-pulseaudio -k &
-start-pulseaudio-x11 &
 setxkbmap -layout us -variant dvp -option caps:super &
 setxkbmap -option caps:super &
 xrdb -load $XDG_CONFIG_HOME/X11/xresources &
