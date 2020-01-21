@@ -1,5 +1,6 @@
 ;; bootstrap straight.el
 (setq gc-cons-threshold (* 50 1000 1000))
+(setq vc-follow-symlinks t)
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
