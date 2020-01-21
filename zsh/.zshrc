@@ -12,8 +12,9 @@ unset _comp_files
 source <(antibody init)
 
 function restart_polybar(){
-	killall polybar > /dev/null
-	polybar -c $HOME/.config/polybar/config.ini status_top &!
+	for m in $(polybar --list-monitors | cut -d":" -f1); do
+		MONITOR=$m polybar --reload top &
+	done
 }
 
 function t() {
