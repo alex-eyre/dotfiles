@@ -74,7 +74,7 @@ super + shift + ampersand
 super + shift + bracketleft
 	bspc node -d II
 super + shift + braceleft
-	bspc node -d II
+	bspc node -d III
 super + shift + braceright
 	bspc node -d IV
 super + shift + parenleft
