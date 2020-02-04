@@ -1,4 +1,5 @@
 (use-package sublimity
+  :disabled t
   :straight(sublimity :type git :host github :repo "zk-phi/sublimity")
   :straight(sublimity-attractive :type git :host github :repo "zk-phi/sublimity")
   :config
@@ -44,7 +45,7 @@
 
 	org-startup-indented t
 	org-bullets-bullet-list '(" ") ;; no bullets, needs org-bullets package
-	org-ellipsis "  " ;; folding symbol
+	org-ellipsis "↯" ;; folding symbol
 	org-pretty-entities t
 	org-hide-emphasis-markers t
 	;; show actually italicized text instead of /italicized text/
