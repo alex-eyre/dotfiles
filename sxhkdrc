@@ -11,14 +11,20 @@ super + shift + p
 super + ctrl + p
 	power_menu
 super + Return
-	kitty
+	alacritty
 super + shift + q
 	killall Xorg
 super + shift + c
 	bspc node -c
 
+super + shift KP_{0,1,2,3,4,5,6,7,8,9}
+	bspc config window_gap {0,5,10,15,20,25,30,35,40,45}
+
 super + e
 	rofi-surfraw
+
+XF86Explorer
+	xdotool key XF86AudioPlay
 
 super + s
 	bspc node -g sticky && bspc node -g locked && bspc node -g private
@@ -27,6 +33,18 @@ super + shift + s
 
 super + f
 	bspc node -t \~fullscreen
+
+super + comma
+	bspc monitor -f next
+
+super + h
+	bspc node -m west --follow
+super + l
+	bspc node -m east --follow
+super + H
+	bspc node -m west
+super + L
+	bspc node -m east
 
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
