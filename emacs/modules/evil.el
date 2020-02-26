@@ -22,10 +22,9 @@
   :config
   (evil-leader/set-key
     "p" 'projectile-switch-project
-    "o" 'projectile-find-file
-    "O" 'projectile-find-file-other-frame
+    "o" 'counsel-projectile-find-file
     "i" 'yas-insert-snippet
-    "q" 'projectile-ripgrep
+    "q" 'counsel-projectile-rg
     "'" 'find-note))
 
 (use-package evil-collection

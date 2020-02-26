@@ -16,13 +16,18 @@
   :hook
   (org-mode . evil-org-mode))
 			  
+(use-package org-brain
+  :after org
+  :commands org-brain-visualize)
 					 
   
 (use-package org
-  :straight(org :type built-in)
+  :commands org-mode
   :config
   (evil-leader/set-key
     "e" 'org-toggle-latex-fragment)
+  (setq org-directory "~/notes"
+	org-startup-folded "overview")
   (setq org-html-postamble nil
 	org-latex-pdf-process (list "latexmk -pdflatex=xelatex -f -pdf %f")
 	TeX-engine 'xetex

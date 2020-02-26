@@ -1,4 +1,5 @@
-fortune | lolcat
+alias lolfortune="fortune -a | lolcat"
+lolfortune
 autoload -Uz compinit
 autoload -U bashcompinit
 bashcompinit
@@ -11,16 +12,14 @@ fi
 unset _comp_files
 source <(antibody init)
 
-function restart_polybar(){
-	for m in $(polybar --list-monitors | cut -d":" -f1); do
-		MONITOR=$m polybar --reload top &
-	done
-}
+eval $(thefuck --alias)
+
+
+. $HOME/.nix-profile/etc/profile.d/nix.sh
 
 function t() {
 	cd $(mktemp -d /tmp/$1.XXXX)
 }
-
 
 # Luke's experiment
 preexec() { clear }
@@ -78,7 +77,6 @@ fi
 # Prompt
 if [ "$TERM" != "eterm-color" ]; then
 	AGKOZAK_MULTILINE=0
-	AGKOZAK_MULTILINE=0
-	AGKOZAK_PROMPT_CHAR=( λ %# : )
+	AGKOZAK_PROMPT_CHAR=( \> %# : )
 	antibody bundle agkozak/agkozak-zsh-prompt
 fi

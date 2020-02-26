@@ -13,7 +13,7 @@ super + ctrl + p
 super + Return
 	alacritty
 super + shift + q
-	killall Xorg
+	pkill Xorg
 super + shift + c
 	bspc node -c
 
@@ -68,6 +68,12 @@ super + ctrl {h,j,k,l}
 super + shift + {h,j,k,l}
     bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
+
+super + ctrl + alt + r
+	/home/alex/.local/bin/restart_polybar
+	/home/alex/.local/bin/restart_hotkeys
+	/home/alex/.config/bspwm/bspwmrc
+
 super + ampersand
 	bspc desktop -f I
 super + bracketleft
@@ -86,6 +92,9 @@ super + parenright
 	bspc desktop -f VIII
 super + plus
 	bspc desktop -f IX
+
+super + ctrl + alt + d
+	intel-virtual-output && autorandr -c && restart_polybar
 
 super + shift + ampersand
 	bspc node -d I

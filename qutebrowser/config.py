@@ -1,4 +1,3 @@
-c.fonts.monospace = "'FuraCode NF', 'FiraCode Nerd Font', monospace"
 c.tabs.position = "left"
 c.colors.tabs.bar.bg = "#1b1d1e"
 c.colors.statusbar.normal.bg = "#1b1d1e"
@@ -23,6 +22,7 @@ config.bind(";M", "hint --rapid links spawn umpv-bluetooth {hint-url}")
 c.downloads.location.directory = "~/downloads"
 
 c.content.host_blocking.lists.append("https://block.energized.pro/unified/formats/hosts")
+c.content.host_blocking.whitelist = ["*.4chan.org", "*.4cdn.org"]
 
 c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
                        "gg": "https://google.co.uk/search?query={}",

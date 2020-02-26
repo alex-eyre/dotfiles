@@ -13,10 +13,14 @@ export PATH=$PATH:$HOME/.local/share/latex/bin/x86_64-linux
 export PATH=$(pyenv root)/bin:$PATH
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin
+export PATH=$PATH:$HOME/.local/share/chomper/bin
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME"/android
 # export QT_QPA_PLATFORMTHEME=gtk2
 
-export BROWSER=chromium
+export PATH="$PATH:$HOME/.local/share/npm/bin"
+export NODE_PATH="$HOME/.local/share/npm/lib/node_modules:$NODE_PATH"
+
+export BROWSER=qutebrowser
 export SURFRAW_graphical_browser=$BROWSER
 
 

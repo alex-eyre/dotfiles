@@ -1,1 +1,2 @@
 emacs/modules/todoist.el # Avoid commiting my token 🙃
+*.elc # precompiled emacs

@@ -1,0 +1,6 @@
+OUTPUT=$(curl -s https://am.i.mullvad.net/json)
+if test $? -eq 0; then
+	echo $OUTPUT | jq ."mullvad_exit_ip" - | sed "s/true/%{F#0f0}Connected/;s/false/%{F#f00}Disconnected/"
+else
+	echo "%{F#f00}Disconnected (failure)"
+fi

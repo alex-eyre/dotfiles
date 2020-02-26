@@ -1,11 +1,12 @@
 #!/usr/bin/env sh
+
 optirun intel-virtual-output
 xrandr --output VIRTUAL1 --mode $(xrandr | grep 144.0 | cut -d " " -f 4) --same-as eDP1
-bspc monitor "VIRTUAL1" -s "main"
-bspc monitor "main" -n "main_ext"
-bspc monitor "VIRTUAL1" -n "main"
-bspc monitor "main_ext" -d I II III IV V VI VII VIII IX
+bspc monitor "VIRTUAL1" -s "main_ext"
+bspc monitor "main_ext" -d
 xrandr --output VIRTUAL2 --auto --right-of VIRTUAL1
 bspc monitor "VIRTUAL2" -n "secondary_ext"
-bspc monitor "secondary_ext" -d I II III IV V VI VII VIII IX
+bspc monitor "secondary_ext" -d
 bspc monitor -f "main_ext"
+$HOME/.local/bin/desktops_to_monitor VIRTUAL1 I II III IV V VI
+$HOME/.local/bin/desktops_to_monitor VIRTUAL2 VII VIII IX
