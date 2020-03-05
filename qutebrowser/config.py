@@ -1,3 +1,4 @@
+c.fonts.default_family = ["FiraCode NF", "FiraCode Nerd Font", "monospace"]
 c.tabs.position = "left"
 c.colors.tabs.bar.bg = "#1b1d1e"
 c.colors.statusbar.normal.bg = "#1b1d1e"
@@ -14,6 +15,9 @@ c.tabs.last_close = "default-page"
 c.qt.args = ['force-webrtc-ip-handling-policy=disable_non_proxied_udp']
 c.content.webrtc_ip_handling_policy = "disable-non-proxied-udp"
 
+
+config.bind("zl", "spawn --userscript qute-pass --password-only --mode gopass")
+
 config.bind(",m", "hint links spawn umpv {hint-url}")
 config.bind(",M", "hint links spawn umpv-bluetooth {hint-url}")
 config.bind(";m", "hint --rapid links spawn umpv {hint-url}")
@@ -22,7 +26,11 @@ config.bind(";M", "hint --rapid links spawn umpv-bluetooth {hint-url}")
 c.downloads.location.directory = "~/downloads"
 
 c.content.host_blocking.lists.append("https://block.energized.pro/unified/formats/hosts")
-c.content.host_blocking.whitelist = ["*.4chan.org", "*.4cdn.org"]
+
+c.hints.chars = "aoeuidhtns"
+config.bind("a", "hint all normal")
+config.bind("A", "hint all tab-fg")
+config.bind("E", "hint all tab-bg")
 
 c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
                        "gg": "https://google.co.uk/search?query={}",
@@ -33,15 +41,17 @@ c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
                        "note": "file:///home/alex/notes/{}.html",
                        "ccwiki": "https://wiki.uk.cambridgeconsultants.com/index.php?search={}",
                        "dict": "https://en.wiktionary.org/w/index.php?search={}",
-                       "apkmirror": "https://www.apkmirror.com/?s={}"}
+                       "apkmirror": "https://www.apkmirror.com/?s={}",
+                       "gl": "https://gitlab.uk.cambridgeconsultants.com/search?search={}"}
 
 c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"
 c.content.headers.accept_language = "en-US,en;q=0.5"
 # c.content.headers.custom = {"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"} # this breaks so much shit you have no idea
 
 config.bind("xt", "config-cycle tabs.show never multiple")
+config.bind("xn", "config-cycle statusbar.hide false true")
 
-c.fonts.statusbar = "14pt monospace"
-c.fonts.completion.category = "bold 14pt monospace"
-c.fonts.completion.entry = "14pt monospace"
-c.fonts.downloads = "14pt monospace"
+c.fonts.statusbar = "14pt default_family"
+c.fonts.completion.category = "bold 14pt default_family"
+c.fonts.completion.entry = "14pt default_family"
+c.fonts.downloads = "14pt default_family"
