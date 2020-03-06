@@ -15,7 +15,6 @@ c.tabs.last_close = "default-page"
 c.qt.args = ['force-webrtc-ip-handling-policy=disable_non_proxied_udp']
 c.content.webrtc_ip_handling_policy = "disable-non-proxied-udp"
 
-
 config.bind("zl", "spawn --userscript qute-pass --password-only --mode gopass")
 
 config.bind(",m", "hint links spawn umpv {hint-url}")
@@ -26,6 +25,8 @@ config.bind(";M", "hint --rapid links spawn umpv-bluetooth {hint-url}")
 c.downloads.location.directory = "~/downloads"
 
 c.content.host_blocking.lists.append("https://block.energized.pro/unified/formats/hosts")
+c.content.host_blocking.whitelist.append("*.4chan.org")
+c.content.host_blocking.whitelist.append("*.4cdn.org")
 
 c.hints.chars = "aoeuidhtns"
 config.bind("a", "hint all normal")
