@@ -8,6 +8,24 @@ Reloads the configuration
 (provide 'alex/reload)
 #+END_SRC
 
+* Workflow
+**** Projectile
+#+BEGIN_SRC emacs-lisp
+(use-package projectile
+  :straight ripgrep
+  :straight projectile
+  :config(setq projectile-completion-system 'ivy
+projectile-project-search-path '("~/projects")
+projectile-indexing-method 'alien))
+#+END_SRC
+Counsel-projectile replaces a bunch of the projectile functions to use ivy.
+#+BEGIN_SRC emacs-lisp
+(use-package counsel-projectile
+  :after projectile
+  :commands(counsel-projectile
+	    counsel-projectile-switch-project
+	    counsel-projectile-find-file))
+#+END_SRC
 * Keyboard
 **** Evil
 I don't like RSI, so I use evil. Don't @ me.
@@ -17,7 +35,19 @@ I don't like RSI, so I use evil. Don't @ me.
 #+END_SRC
 
 * User Interface
+** Libraries
+**** All The Icons
+This is required for pretty icons etc.
+#+BEGIN_SRC emacs-lisp
+(use-package all-the-icons
+    :demand t)
+#+END_SRC
 ** Meta UI
+**** Dashboard
+#+BEGIN_SRC emacs-lisp
+(use-package dashboard
+    :config(dashboard-setup-startup-hook))
+#+END_SRC
 **** Counsel/Ivy
   Better M-x and cool stuff
   #+BEGIN_SRC emacs-lisp
@@ -44,6 +74,6 @@ Oh baby, there's some shit here boys.
      #+BEGIN_SRC emacs-lisp
      (use-package mixed-pitch
      :after org
-     :custom-face(variable-pitch ((t (:family "Cambria"))))
+     :custom-face(variable-pitch ((t (:family "ETBembo"))))
      :hook(org-mode . mixed-pitch-mode))
 #+END_SRC
