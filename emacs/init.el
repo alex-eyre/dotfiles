@@ -1,6 +1,10 @@
-;; bootstrap straight.el
+(when (display-graphic-p)
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1)
+  (menu-bar-mode -1))
 (setq gc-cons-threshold (* 50 1000 1000))
 (setq vc-follow-symlinks t)
+;; bootstrap straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -17,21 +21,4 @@
 (straight-use-package 'use-package)
 ;; always straight a package by default
 (setq straight-use-package-by-default t)
-
-
-;; modular system
-(defconst config-dir "~/.config/emacs")
-(defun load-directory (directory)
-  "Load recursively all `.el' files in DIRECTORY."
-  (dolist (element (directory-files-and-attributes directory nil nil nil))
-    (let* ((path (car element))
-           (fullpath (concat directory "/" path))
-           (isdir (car (cdr element)))
-           (ignore-dir (or (string= path ".") (string= path ".."))))
-      (cond
-       ((and (eq isdir t) (not ignore-dir))
-        (load-directory fullpath))
-       ((and (eq isdir nil) (string= (substring path -3) ".el"))
-        (load (file-name-sans-extension fullpath)))))))
-(load-directory (expand-file-name (concat config-dir "/modules")))
-(setq gc-cons-threshold (* 2 1000 1000))
+(org-babel-load-file (expand-file-name "config.org" user-emacs-directory))
