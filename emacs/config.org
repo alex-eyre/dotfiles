@@ -1,0 +1,49 @@
+* Defuns
+**** Reload
+Reloads the configuration
+#+BEGIN_SRC emacs-lisp
+(defun alex/reload ()
+  (interactive)
+  (load-file (expand-file-name "init.el" user-emacs-directory)))
+(provide 'alex/reload)
+#+END_SRC
+
+* Keyboard
+**** Evil
+I don't like RSI, so I use evil. Don't @ me.
+#+BEGIN_SRC emacs-lisp
+(use-package evil
+  :init(evil-mode 1))
+#+END_SRC
+
+* User Interface
+** Meta UI
+**** Counsel/Ivy
+  Better M-x and cool stuff
+  #+BEGIN_SRC emacs-lisp
+  (use-package ivy
+:straight ivy
+:straight counsel
+:hook(after-init . counsel-mode))
+  #+END_SRC
+** Colours
+#+BEGIN_SRC emacs-lisp
+(use-package doom-themes
+  :after org
+  :config
+  (load-theme 'doom-Iosvkem t)
+  (doom-themes-org-config))
+#+END_SRC
+* Org
+Oh baby, there's some shit here boys.
+#+BEGIN_SRC emacs-lisp
+(use-package org
+  :mode("\\.org\\'" . org-mode))
+#+END_SRC
+**** Mixed Pitch Mode
+     #+BEGIN_SRC emacs-lisp
+     (use-package mixed-pitch
+     :after org
+     :custom-face(variable-pitch ((t (:family "Cambria"))))
+     :hook(org-mode . mixed-pitch-mode))
+#+END_SRC
