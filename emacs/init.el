@@ -1,8 +1,5 @@
-(when (display-graphic-p)
-  (scroll-bar-mode -1)
-  (tool-bar-mode -1)
-  (menu-bar-mode -1))
-(setq gc-cons-threshold (* 50 1000 1000))
+;; Package-Requires: ((dash "2.17.0"))
+(setq package-user-dir (expand-file-name "packages" user-emacs-directory))
 (setq vc-follow-symlinks t)
 ;; bootstrap straight.el
 (defvar bootstrap-version)
@@ -21,4 +18,6 @@
 (straight-use-package 'use-package)
 ;; always straight a package by default
 (setq straight-use-package-by-default t)
+(use-package no-littering
+  :demand t)
 (org-babel-load-file (expand-file-name "config.org" user-emacs-directory))
