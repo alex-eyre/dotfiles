@@ -7,6 +7,11 @@ Reloads the configuration
   (load-file (expand-file-name "init.el" user-emacs-directory)))
 (provide 'alex/reload)
 #+END_SRC
+#+BEGIN_SRC emacs-lisp
+(defun alex/config ()
+  (interactive)
+  (find-file (expand-file-name "config.org" user-emacs-directory)))
+#+END_SRC
 
 * Workflow
 **** Magit
@@ -39,6 +44,7 @@ Counsel-projectile replaces a bunch of the projectile functions to use ivy.
 **** Company
 #+BEGIN_SRC emacs-lisp
 (use-package company
+  :disabled t
   :hook(prog-mode . company-mode))
 #+END_SRC
 * Keyboard
@@ -46,9 +52,22 @@ Counsel-projectile replaces a bunch of the projectile functions to use ivy.
 I don't like RSI, so I use evil. Don't @ me.
 #+BEGIN_SRC emacs-lisp
 (use-package evil
-  :init(evil-mode 1))
+  :init
+    (setq evil-want-keybinding nil)
+    (evil-mode 1))
 #+END_SRC
-
+Evil works better if you force modes to cooperate.
+#+BEGIN_SRC emacs-lisp
+(use-package evil-collection
+  :after evil
+  :init(evil-collection-init))
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+(use-package evil-magit
+  :after evil
+  :after magit
+  :config(setq evil-magit-state 'normal))
+#+END_SRC
 **** I'm too used to tmux
 #+BEGIN_SRC emacs-lisp
 (defun setup-input-decode-map ()
@@ -98,6 +117,7 @@ This is required for pretty icons etc.
 ** Colours
 #+BEGIN_SRC emacs-lisp
 (use-package doom-themes
+  :if(display-graphic-p)
   :after org
   :config
   (load-theme 'doom-Iosvkem t)
@@ -106,8 +126,18 @@ This is required for pretty icons etc.
 * Org
 Oh baby, there's some shit here boys.
 #+BEGIN_SRC emacs-lisp
+(setq load-path (cl-remove-if (lambda (x) (string-match-p "org$" x)) load-path))
   (use-package org
-    :mode("\\.org\\'" . org-mode)
+    :straight org-plus-contrib
+    :mode("\\.org$" . org-mode)
+    :commands(org-mode
+	      org-capture
+	      org-reload)
+    :init
+    (setq org-directory "~/notes"
+	  org-default-notes-file (expand-file-name "inbox.org" org-directory)
+	  org-agenda-files (list (expand-file-name org-directory)))
+    (org-reload)
     :custom-face
     (org-level-1 ((t (:inherit outline-1 :height 1.5))))
     (org-level-2 ((t (:inherit outline-2 :height 1.4))))
@@ -132,9 +162,14 @@ Oh baby, there's some shit here boys.
   :hook(org-mode . org-bullets-mode)
   :config(setq org-bullets-bullet-list '(" ")))
 #+END_SRC
+**** Writeroom
+#+BEGIN_SRC emacs-lisp
+(use-package writeroom-mode
+  :commands(writeroom-mode))
+#+END_SRC
 * Languages
 **** Rust
-#+BEGIN_SRC
+#+BEGIN_SRC emacs-lisp
 (use-package rust-mode
     :mode("\\.rs\\'" . rust-mode))
 #+END_SRC

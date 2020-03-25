@@ -1,8 +1,6 @@
-(when (display-graphic-p)
-  (scroll-bar-mode -1)
-  (tool-bar-mode -1)
-  (menu-bar-mode -1))
-(setq gc-cons-threshold (* 50 1000 1000))
+;; -*- lexical-binding: t; -*-
+(setq gc-cons-threshold 16777216
+  gc-cons-percentage 0.1)
 (setq vc-follow-symlinks t)
 ;; bootstrap straight.el
 (defvar bootstrap-version)
@@ -22,3 +20,4 @@
 ;; always straight a package by default
 (setq straight-use-package-by-default t)
 (org-babel-load-file (expand-file-name "config.org" user-emacs-directory))
+
