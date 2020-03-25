@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t; -*-
-;; Package-Requires: ((dash "2.17.0"))
 (setq gc-cons-threshold 16777216
-  gc-cons-percentage 0.1)
+      gc-cons-percentage 0.1)
 (setq package-user-dir (expand-file-name "packages" user-emacs-directory))
 (setq vc-follow-symlinks t)
 ;; bootstrap straight.el
