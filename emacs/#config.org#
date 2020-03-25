@@ -4,7 +4,6 @@ Reloads the configuration
 #+BEGIN_SRC emacs-lisp
 (defun alex/reload ()
   (interactive)
-  (delete-file (expand-file-name "config.el" user-emacs-directory))
   (load-file (expand-file-name "init.el" user-emacs-directory)))
 (provide 'alex/reload)
 #+END_SRC
@@ -104,7 +103,7 @@ This is required for pretty icons etc.
   (use-package ivy
 :straight ivy
 :straight counsel
-:init(counsel-mode))
+:hook(after-init . counsel-mode))
   #+END_SRC
 **** Modeline
 #+BEGIN_SRC emacs-lisp
@@ -128,12 +127,12 @@ This is required for pretty icons etc.
 Oh baby, there's some shit here boys.
 #+BEGIN_SRC emacs-lisp
 (setq load-path (cl-remove-if (lambda (x) (string-match-p "org$" x)) load-path))
+(use-package 
   (use-package org
     :straight org-plus-contrib
     :mode("\\.org$" . org-mode)
     :commands(org-mode
-	      org-capture
-	      org-reload)
+	      org-capture)
     :init
     (setq org-directory "~/notes"
 	  org-default-notes-file (expand-file-name "inbox.org" org-directory)
@@ -167,12 +166,6 @@ Oh baby, there's some shit here boys.
 #+BEGIN_SRC emacs-lisp
 (use-package writeroom-mode
   :commands(writeroom-mode))
-**** Spacing
-#+BEGIN_SRC emacs-lisp
- (use-package org-spacer
-    :straight (org-spacer :type git :host github :repo "dustinlacewell/org-spacer.el")
-    :config(setq org-spacer-element-blanks '((3 headline)
-					    (1 paragraph src-block table property-drawer))))
 #+END_SRC
 * Languages
 **** Rust
