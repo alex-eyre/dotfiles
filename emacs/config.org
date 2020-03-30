@@ -1,29 +1,39 @@
 * Defuns
+**** Restart Emacs
+#+BEGIN_SRC emacs-lisp
+(use-package restart-emacs
+  :commands(restart-emacs))
+#+END_SRC
 **** Reload
 Reloads the configuration
 #+BEGIN_SRC emacs-lisp
 (defun alex/reload ()
+  "Reloads the config.org file, totally."
   (interactive)
   (delete-file (expand-file-name "config.el" user-emacs-directory))
-  (load-file (expand-file-name "init.el" user-emacs-directory)))
+  (restart-emacs))
 (provide 'alex/reload)
 #+END_SRC
+**** Config
 #+BEGIN_SRC emacs-lisp
 (defun alex/config ()
   (interactive)
   (find-file (expand-file-name "config.org" user-emacs-directory)))
+(provide 'alex/config)
 #+END_SRC
 
+**** Notes
+#+BEGIN_SRC emacs-lisp
+(defun alex/note ()
+  (interactive)
+  (projectile-find-file-in-directory "~/notes"))
+(provide 'alex/note)
+#+END_SRC
 * Workflow
 **** Magit
 #+BEGIN_SRC emacs-lisp
 (use-package magit
   :commands(magit))
-#+END_SRC
-**** Aggressive Indent
-#+BEGIN_SRC emacs-lisp
-(use-package aggressive-indent
-  :hook(prog-mode . aggressive-indent-mode))
 #+END_SRC
 **** Projectile
 #+BEGIN_SRC emacs-lisp
@@ -48,19 +58,40 @@ Counsel-projectile replaces a bunch of the projectile functions to use ivy.
   :disabled t
   :hook(prog-mode . company-mode))
 #+END_SRC
+**** Yasnippet
+#+BEGIN_SRC emacs-lisp
+(use-package yasnippet
+  :after yasnippet-snippets
+  :after evil-leader
+  :config(evil-leader/set-key "i" 'yas-insert-snippet)
+  :hook(after-init . yas-global-mode))
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+(use-package yasnippet-snippets)
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+(use-package doom-snippets
+  :disabled t
+  :straight(doom-snippets :type git :host github :repo "hlissner/doom-snippets")
+  :after yasnippet)
+#+END_SRC
+**** Aggressive Indent
+#+BEGIN_SRC emacs-lisp
+(use-package aggressive-indent
+  :hook(prog-mode . aggressive-indent-mode))
+#+END_SRC
+
 * Keyboard
 **** Evil
 I don't like RSI, so I use evil. Don't @ me.
 #+BEGIN_SRC emacs-lisp
+(setq evil-want-keybinding nil)
 (use-package evil
-  :init
-    (setq evil-want-keybinding nil)
-    (evil-mode 1))
+  :hook(after-init . evil-mode))
 #+END_SRC
 Evil works better if you force modes to cooperate.
 #+BEGIN_SRC emacs-lisp
 (use-package evil-collection
-  :after evil
   :init(evil-collection-init))
 #+END_SRC
 #+BEGIN_SRC emacs-lisp
@@ -68,6 +99,20 @@ Evil works better if you force modes to cooperate.
   :after evil
   :after magit
   :config(setq evil-magit-state 'normal))
+#+END_SRC
+take me to your leader lmao
+#+BEGIN_SRC emacs-lisp
+(use-package evil-leader
+  :hook(evil-mode . (lambda () (global-evil-leader-mode)))
+  :config
+  ;; globals
+(evil-leader/set-key
+  "e" 'find-file
+  "b" 'switch-to-buffer
+  "k" 'kill-buffer)
+  ;; org-only
+(evil-leader/set-key-for-mode 'org-mode
+  "a" 'org-insert-heading-after-current))
 #+END_SRC
 **** I'm too used to tmux
 #+BEGIN_SRC emacs-lisp
@@ -96,7 +141,9 @@ This is required for pretty icons etc.
 **** Dashboard
 #+BEGIN_SRC emacs-lisp
 (use-package dashboard
-    :config(dashboard-setup-startup-hook))
+    :config
+    (setq dashboard-startup-banner 3)
+    (dashboard-setup-startup-hook))
 #+END_SRC
 **** Counsel/Ivy
   Better M-x and cool stuff
@@ -115,6 +162,21 @@ This is required for pretty icons etc.
   (mode-line-inactive ((t (:height 100))))
   :hook(after-init . doom-modeline-mode))
 #+END_SRC
+**** Dimmer
+#+BEGIN_SRC emacs-lisp
+(use-package dimmer
+  :config
+  (dimmer-configure-magit)
+  (dimmer-configure-org)
+  :hook(after-init . dimmer-mode))
+#+END_SRC
+**** Modern Fringes
+#+BEGIN_SRC emacs-lisp
+(use-package modern-fringes
+  :straight(modern-fringes :type git :host github :repo "SpecialBomb/emacs-modern-fringes")
+  :hook(after-init . modern-fringes-mode))
+#+END_SRC
+
 ** Colours
 #+BEGIN_SRC emacs-lisp
 (use-package doom-themes
@@ -139,6 +201,23 @@ Oh baby, there's some shit here boys.
 	  org-default-notes-file (expand-file-name "inbox.org" org-directory)
 	  org-agenda-files (list (expand-file-name org-directory)))
     (org-reload)
+    :config(setq org-startup-indented t
+	org-bullets-bullet-list '(" ") ;; no bullets, needs org-bullets package
+	org-ellipsis "  " ;; folding symbol
+	org-pretty-entities t
+	org-hide-emphasis-markers t
+	;; show actually italicized text instead of /italicized text/
+	org-agenda-block-separator ""
+	org-fontify-whole-heading-line t
+	org-fontify-done-headline t
+	org-fontify-quote-and-verse-blocks t)
+    :hook
+    (org-mode . (lambda () (progn
+	(set-window-buffer nil (current-buffer))
+	(setq left-margin-width 2
+	    right-margin-width 2
+	    header-line-format " "
+	    line-spacing 0.1))))
     :custom-face
     (org-level-1 ((t (:inherit outline-1 :height 1.5))))
     (org-level-2 ((t (:inherit outline-2 :height 1.4))))
@@ -167,6 +246,7 @@ Oh baby, there's some shit here boys.
 #+BEGIN_SRC emacs-lisp
 (use-package writeroom-mode
   :commands(writeroom-mode))
+#+END_SRC
 **** Spacing
 #+BEGIN_SRC emacs-lisp
  (use-package org-spacer
@@ -174,9 +254,30 @@ Oh baby, there's some shit here boys.
     :config(setq org-spacer-element-blanks '((3 headline)
 					    (1 paragraph src-block table property-drawer))))
 #+END_SRC
+**** Pretty Tables
+#+BEGIN_SRC emacs-lisp
+(use-package org-pretty-table
+  :straight(org-pretty-table :type git :host github :repo "Fuco1/org-pretty-table")
+  :hook
+  (orgtbl-mode . org-pretty-table-mode)
+  (org-mode . org-pretty-table-mode))
+#+END_SRC
 * Languages
 **** Rust
 #+BEGIN_SRC emacs-lisp
 (use-package rust-mode
     :mode("\\.rs\\'" . rust-mode))
+#+END_SRC
+**** Nix
+#+BEGIN_SRC emacs-lisp
+(use-package nix-mode
+  :mode("\\.nix\\'" . nix-mode))
+#+END_SRC
+
+* Emacs as a Platform
+**** YonChan
+#+BEGIN_SRC emacs-lisp
+(use-package q4
+:straight(q4 :type git :host github :repo "rosbo018/q4")
+:demand t)
 #+END_SRC

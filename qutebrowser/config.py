@@ -43,7 +43,9 @@ c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
                        "ccwiki": "https://wiki.uk.cambridgeconsultants.com/index.php?search={}",
                        "dict": "https://en.wiktionary.org/w/index.php?search={}",
                        "apkmirror": "https://www.apkmirror.com/?s={}",
-                       "gl": "https://gitlab.uk.cambridgeconsultants.com/search?search={}"}
+                       "gl": "https://gitlab.uk.cambridgeconsultants.com/search?search={}",
+                       "leet": "https://1337x.to/search/{}/1"
+                       }
 
 c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"
 c.content.headers.accept_language = "en-US,en;q=0.5"
