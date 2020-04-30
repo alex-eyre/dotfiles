@@ -24,7 +24,7 @@ config.bind(";M", "hint --rapid links spawn umpv-bluetooth {hint-url}")
 
 c.downloads.location.directory = "~/downloads"
 
-c.content.host_blocking.lists.append("https://block.energized.pro/unified/formats/hosts")
+# c.content.host_blocking.lists.append("https://block.energized.pro/unified/formats/hosts")
 c.content.host_blocking.whitelist.append("*.4chan.org")
 c.content.host_blocking.whitelist.append("*.4cdn.org")
 
